@@ -73,6 +73,16 @@ private:
 		}
 		outfile.close();
 	}
+
+	void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
+		if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
+			results.push_back(currentWord);
+		}
+
+		for (auto& child : node->children) {
+			searchByDefinition(child.second, definition, currentWord + child.first, results);
+		}
+	}
 public:
 	Dictionary(const string& path) : dataSetPath(path) {
 		root = new TrieNode();
@@ -113,6 +123,12 @@ public:
 		return "Word not found";
 	}
 
+	vector<string> searchByDefinition(const string& definition) {
+		vector<string> results;
+		searchByDefinition(root, definition, "", results);
+		return results;
+	}
+
 	void resetDictionary() {
 		resetTrie();
 	}
@@ -134,12 +150,18 @@ int main() {
 	cout << dict2.search("2MFM") << endl;
 
 	// Adding a new word and definition
-	dict1.insert("newSlang", "This is a new slang definition");
-	dict2.insert("newEmotion", "This is a new emotional definition");
+	//dict1.insert("newSlang", "This is a new slang definition");
+	//dict2.insert("newEmotion", "This is a new emotional definition");
 
 	// Example usage
 	cout << dict1.search("newSlang") << endl;
 	cout << dict2.search("newEmotion") << endl;
+
+	// Searching by definition
+	vector<string> results = dict1.searchByDefinition("new slang");
+	for (const string& word : results) {
+		cout << "Found word: " << word << endl;
+	}
 
 	return 0;
 }
