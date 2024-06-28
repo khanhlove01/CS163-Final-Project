@@ -23,6 +23,10 @@ void displayMenu() {
     cout << "===========================" << endl;
     cout << "Enter your choice: ";
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 1. Choose Dataset
 void chooseDataSet(Dictionary*& dict, string& currentDataset) {
     cout << "Choose Data Set:" << endl;
     cout << "1. Slang" << endl;
@@ -51,6 +55,16 @@ void chooseDataSet(Dictionary*& dict, string& currentDataset) {
         chooseDataSet(dict, currentDataset);
     }
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 2. Search By keyword
+void searchByKeyword(Dictionary* dict) {
+    cout << "Enter keyword to search: ";
+    string keyword;
+    cin >> keyword;
+    cout << "Definition: " << dict->search(keyword) << endl;
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -66,7 +80,7 @@ int main() {
             chooseDataSet(dict, currentDataset);
             break;
         case 2:
-            //searchByKeyword(dict);
+            searchByKeyword(dict);
             break;
         case 3:
             //searchByDefinition(dict);
