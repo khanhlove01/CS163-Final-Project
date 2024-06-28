@@ -23,6 +23,7 @@ private:
 	vector<string> history;
 	vector<string> favouriteList;
 	string dataSetPath;
+	string historyFilePath;
 
 	void insert(TrieNode* node, const string& word, const string& definition, int index) {
 		if (index == word.size()) {
@@ -74,6 +75,23 @@ private:
 		outfile.close();
 	}
 
+	void saveHistoryToFile() {
+		ofstream outfile(historyFilePath);
+		for (const auto& word : history) {
+			outfile << word << endl;
+		}
+		outfile.close();
+	}
+
+	void loadHistoryFromFile() {
+		ifstream infile(historyFilePath);
+		string word;
+		while (getline(infile, word)) {
+			history.push_back(word);
+		}
+		infile.close();
+	}
+
 	void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
 		if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
 			results.push_back(currentWord);
@@ -84,11 +102,13 @@ private:
 		}
 	}
 public:
-	Dictionary(const string& path) : dataSetPath(path) {
+	Dictionary(const string& path, const string& historyPath) : dataSetPath(path), historyFilePath(historyPath) {
 		root = new TrieNode();
+		loadHistoryFromFile();
 	}
 	~Dictionary() {
 		deleteNode(root);
+		saveHistoryToFile();
 	}
 
 	void insert(const string& word, const string& definition) {
@@ -115,9 +135,12 @@ public:
 	}
 
 	string search(const string& word) {
+		history.push_back(word);
+		saveHistoryToFile();
 		TrieNode* node = search(root, word, 0);
 		if (node && node->isEndOfWord) {
-			history.push_back(word);
+			/*history.push_back(word);
+			saveHistoryToFile();*/
 			return node->definition;
 		}
 		return "Word not found";
@@ -139,8 +162,8 @@ public:
 };
 
 int main() {
-	Dictionary dict1("slang.txt");
-	Dictionary dict2("emotional.txt.TXT");
+	Dictionary dict1("slang.txt", "slang_history.txt");
+	Dictionary dict2("emotional.txt.TXT", "emotional_history.txt");
 
 	dict1.loadDataSet();
 	dict2.loadDataSet();
@@ -168,9 +191,16 @@ int main() {
 	}
 
 	// Viewing search history
-	vector<string> history = dict1.viewHistory();
+	vector<string> history1 = dict1.viewHistory();
 	cout << "Search History:" << endl;
-	for (const string& word : history) {
+	for (const string& word : history1) {
+		cout << word << endl;
+	}
+
+	// Viewing search history
+	vector<string> history2 = dict2.viewHistory();
+	cout << "Search History:" << endl;
+	for (const string& word : history2) {
 		cout << word << endl;
 	}
 
