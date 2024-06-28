@@ -101,6 +101,40 @@ private:
 			searchByDefinition(child.second, definition, currentWord + child.first, results);
 		}
 	}
+
+	void updateFile(const string& word, const string& newDefinition) {
+		ifstream infile(dataSetPath);
+		ofstream outfile("temp.txt");
+		string line;
+
+		while (getline(infile, line)) {
+			istringstream iss(line);
+			string existingWord, existingDefinition;
+			if (dataSetPath == "slang.txt") {
+				getline(iss, existingWord, '`');
+			}
+			else if (dataSetPath == "emotional.txt.TXT") {
+				getline(iss, existingWord, '\t');
+			}
+			getline(iss, existingDefinition);
+
+			if (existingWord == word) {
+				existingDefinition = newDefinition;
+			}
+
+			if (dataSetPath == "slang.txt") {
+				outfile << existingWord << "`" << existingDefinition << endl;
+			}
+			else if (dataSetPath == "emotional.txt.TXT") {
+				outfile << existingWord << "\t" << existingDefinition << endl;
+			}
+		}
+
+		infile.close();
+		outfile.close();
+		remove(dataSetPath.c_str());
+		rename("temp.txt", dataSetPath.c_str());
+	}
 public:
 	Dictionary(const string& path, const string& historyPath) : dataSetPath(path), historyFilePath(historyPath) {
 		root = new TrieNode();
@@ -159,6 +193,14 @@ public:
 	void resetDictionary() {
 		resetTrie();
 	}
+
+	void editDefinition(const string& word, const string& newDefinition) {
+		TrieNode* node = search(root, word, 0);
+		if (node && node->isEndOfWord) {
+			node->definition = newDefinition;
+			updateFile(word, newDefinition);
+		}
+	}
 };
 
 int main() {
@@ -169,40 +211,43 @@ int main() {
 	dict2.loadDataSet();
 
 	// Example usage
-	cout << dict1.search("BFF") << endl;
-	cout << dict1.search(":-)") << endl;
+	//cout << dict1.search("BFF") << endl;
+	//cout << dict1.search(":-)") << endl;
 
 	// Example usage
-	cout << dict2.search("(-:") << endl;
-	cout << dict2.search("2MFM") << endl;
+	//cout << dict2.search("(-:") << endl;
+	//cout << dict2.search("2MFM") << endl;
 
 	// Adding a new word and definition
 	//dict1.insert("newSlang", "This is a new slang definition");
 	//dict2.insert("newEmotion", "This is a new emotional definition");
 
 	// Example usage
-	cout << dict1.search("newSlang") << endl;
-	cout << dict2.search("newEmotion") << endl;
+	//cout << dict1.search("newSlang") << endl;
+	//cout << dict2.search("newEmotion") << endl;
 
+	// Editing a word's definition
+	dict1.editDefinition("newSlang1", "This is an updated slang1 definition");
+	cout << dict1.search("newSlang1") << endl;
 	// Searching by definition
-	vector<string> results = dict1.searchByDefinition("new slang");
+	/*vector<string> results = dict1.searchByDefinition("new slang");
 	for (const string& word : results) {
 		cout << "Found word: " << word << endl;
-	}
+	}*/
 
 	// Viewing search history
-	vector<string> history1 = dict1.viewHistory();
+	/*vector<string> history1 = dict1.viewHistory();
 	cout << "Search History:" << endl;
 	for (const string& word : history1) {
 		cout << word << endl;
-	}
+	}*/
 
 	// Viewing search history
-	vector<string> history2 = dict2.viewHistory();
+	/*vector<string> history2 = dict2.viewHistory();
 	cout << "Search History:" << endl;
 	for (const string& word : history2) {
 		cout << word << endl;
-	}
+	}*/
 
 	return 0;
 }
