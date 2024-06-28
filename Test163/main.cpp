@@ -24,6 +24,7 @@ private:
 	vector<string> favouriteList;
 	string dataSetPath;
 	string historyFilePath;
+	string favouriteFilePath;
 
 	void insert(TrieNode* node, const string& word, const string& definition, int index) {
 		if (index == word.size()) {
@@ -92,6 +93,23 @@ private:
 		infile.close();
 	}
 
+	void saveFavouritesToFile() {
+		ofstream outfile(favouriteFilePath);
+		for (const auto& word : favouriteList) {
+			outfile << word << endl;
+		}
+		outfile.close();
+	}
+
+	void loadFavouritesFromFile() {
+		ifstream infile(favouriteFilePath);
+		string word;
+		while (getline(infile, word)) {
+			favouriteList.push_back(word);
+		}
+		infile.close();
+	}
+
 	void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
 		if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
 			results.push_back(currentWord);
@@ -136,13 +154,16 @@ private:
 		rename("temp.txt", dataSetPath.c_str());
 	}
 public:
-	Dictionary(const string& path, const string& historyPath) : dataSetPath(path), historyFilePath(historyPath) {
+	Dictionary(const string& path, const string& historyPath, const string& favouritePath)
+		: dataSetPath(path), historyFilePath(historyPath), favouriteFilePath(favouritePath) {
 		root = new TrieNode();
 		loadHistoryFromFile();
+		loadFavouritesFromFile();
 	}
 	~Dictionary() {
 		deleteNode(root);
 		saveHistoryToFile();
+		saveFavouritesToFile();
 	}
 
 	void insert(const string& word, const string& definition) {
@@ -201,22 +222,37 @@ public:
 			updateFile(word, newDefinition);
 		}
 	}
+
+	void addFavourite(const string& word) {
+		favouriteList.push_back(word);
+		saveFavouritesToFile();
+	}
+
+	vector<string> viewFavourites() const {
+		return favouriteList;
+	}
 };
 
 int main() {
-	Dictionary dict1("slang.txt", "slang_history.txt");
-	Dictionary dict2("emotional.txt.TXT", "emotional_history.txt");
+	Dictionary dict1("slang.txt", "slang_history.txt", "slang_favourites.txt");
+	Dictionary dict2("emotional.txt.TXT", "emotional_history.txt", "emotional_favourites.txt");
 
 	dict1.loadDataSet();
 	dict2.loadDataSet();
 
 	// Example usage
-	//cout << dict1.search("BFF") << endl;
-	//cout << dict1.search(":-)") << endl;
+	cout << dict1.search("BFF") << endl;
+	dict1.addFavourite("BFF");
+
+	cout << dict1.search(":-)") << endl;
+	dict1.addFavourite(":-)");
 
 	// Example usage
-	//cout << dict2.search("(-:") << endl;
-	//cout << dict2.search("2MFM") << endl;
+	cout << dict2.search("(-:") << endl;
+	dict2.addFavourite("(-:");
+
+	cout << dict2.search("2MFM") << endl;
+	dict2.addFavourite("2MFM");
 
 	// Adding a new word and definition
 	//dict1.insert("newSlang", "This is a new slang definition");
@@ -248,6 +284,13 @@ int main() {
 	for (const string& word : history2) {
 		cout << word << endl;
 	}*/
+
+	// Viewing favourite list
+	vector<string> favourites = dict1.viewFavourites();
+	cout << "Favourite List:" << endl;
+	for (const string& word : favourites) {
+		cout << word << endl;
+	}
 
 	return 0;
 }
