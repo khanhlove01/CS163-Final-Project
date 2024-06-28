@@ -65,6 +65,27 @@ void searchByKeyword(Dictionary* dict) {
     cin >> keyword;
     cout << "Definition: " << dict->search(keyword) << endl;
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 3. Search by definition
+void searchByDefinition(Dictionary* dict) {
+    cout << "Enter definition to search: ";
+    string definition;
+    cin.ignore();
+    getline(cin, definition);
+    vector<string> results = dict->searchByDefinition(definition);
+    if (results.empty()) {
+        cout << "No words found with the given definition." << endl;
+    }
+    else {
+        cout << "Words found: ";
+        for (const string& word : results) {
+            cout << word << " ";
+        }
+        cout << endl;
+    }
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -83,7 +104,7 @@ int main() {
             searchByKeyword(dict);
             break;
         case 3:
-            //searchByDefinition(dict);
+            searchByDefinition(dict);
             break;
         case 4:
             //viewHistory(dict);
