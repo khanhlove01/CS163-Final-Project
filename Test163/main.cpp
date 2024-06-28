@@ -129,6 +129,10 @@ public:
 		return results;
 	}
 
+	vector<string> viewHistory() const {
+		return history;
+	}
+
 	void resetDictionary() {
 		resetTrie();
 	}
@@ -161,6 +165,13 @@ int main() {
 	vector<string> results = dict1.searchByDefinition("new slang");
 	for (const string& word : results) {
 		cout << "Found word: " << word << endl;
+	}
+
+	// Viewing search history
+	vector<string> history = dict1.viewHistory();
+	cout << "Search History:" << endl;
+	for (const string& word : history) {
+		cout << word << endl;
 	}
 
 	return 0;
