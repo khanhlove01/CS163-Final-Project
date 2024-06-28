@@ -284,16 +284,31 @@ public:
 	}
 
 	void addFavourite(const string& word) {
-		favouriteList.push_back(word);
-		saveFavouritesToFile();
+		if (find(favouriteList.begin(), favouriteList.end(), word) == favouriteList.end()) {
+			favouriteList.push_back(word);
+			saveFavouritesToFile();
+		}
+	}
+
+	void removeFavourite(const string& word) {
+		auto it = find(favouriteList.begin(), favouriteList.end(), word);
+		if (it != favouriteList.end()) {
+			favouriteList.erase(it);
+			saveFavouritesToFile();
+		}
 	}
 
 	vector<string> viewFavourites() const {
 		return favouriteList;
 	}
+
 	void removeWordFromDictionary(const string& word) {
-		if (!Isremoved(root, word, 0)) {
+		if (Isremoved(root, word, 0)) {
 			removeFromFile(word);
+			auto it = remove_if(words.begin(), words.end(), [&](const pair<string, string>& p) { return p.first == word; });
+			if (it != words.end()) {
+				words.erase(it, words.end());
+			}
 		}
 	}
 
@@ -333,8 +348,8 @@ int main() {
 	dict1.loadDataSet();
 	dict2.loadDataSet();
 	//reset
-	dict1.resetToOriginal("originalslang.txt");
-	dict2.resetToOriginal("originalemotional.txt.TXT");
+	//dict1.resetToOriginal("originalslang.txt");
+	//dict2.resetToOriginal("originalemotional.txt.TXT");
 
 	// Example usage: Get a random word and its definition
 	auto randomWord1 = dict1.getRandomWord();
@@ -342,6 +357,26 @@ int main() {
 
 	auto randomWord2 = dict2.getRandomWord();
 	cout << "Random emotional word: " << randomWord2.first << " - " << randomWord2.second << endl;
+	// Viewing favourite list
+	vector<string> favourites = dict1.viewFavourites();
+	cout << "Favourite List:" << endl;
+	for (const string& word : favourites) {
+		cout << word << endl;
+	}
+	// Example usage: Add a word to favourites
+	dict1.addFavourite("BFF");
+	favourites = dict1.viewFavourites();
+	cout << "Favourite List:" << endl;
+	for (const string& word : favourites) {
+		cout << word << endl;
+	}
+	// Example usage: Remove a word from favourites
+	dict1.removeFavourite("BFF");
+	favourites = dict1.viewFavourites();
+	cout << "Favourite List:" << endl;
+	for (const string& word : favourites) {
+		cout << word << endl;
+	}
 	// Example usage
 	//cout << dict1.search("BFF") << endl;
 	//dict1.addFavourite("BFF");
