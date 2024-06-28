@@ -5,3 +5,5 @@ newSlang1
 BFF
 :-)
 newSlang1
+newSlang1
+newSlang2

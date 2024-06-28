@@ -241,18 +241,18 @@ int main() {
 	dict2.loadDataSet();
 
 	// Example usage
-	cout << dict1.search("BFF") << endl;
-	dict1.addFavourite("BFF");
+	//cout << dict1.search("BFF") << endl;
+	//dict1.addFavourite("BFF");
 
-	cout << dict1.search(":-)") << endl;
-	dict1.addFavourite(":-)");
+	//cout << dict1.search(":-)") << endl;
+	//dict1.addFavourite(":-)");
 
 	// Example usage
-	cout << dict2.search("(-:") << endl;
-	dict2.addFavourite("(-:");
+	//cout << dict2.search("(-:") << endl;
+	//dict2.addFavourite("(-:");
 
-	cout << dict2.search("2MFM") << endl;
-	dict2.addFavourite("2MFM");
+	//cout << dict2.search("2MFM") << endl;
+	//dict2.addFavourite("2MFM");
 
 	// Adding a new word and definition
 	//dict1.insert("newSlang", "This is a new slang definition");
@@ -263,8 +263,8 @@ int main() {
 	//cout << dict2.search("newEmotion") << endl;
 
 	// Editing a word's definition
-	dict1.editDefinition("newSlang1", "This is an updated slang1 definition");
-	cout << dict1.search("newSlang1") << endl;
+	dict1.editDefinition("newSlang2", "This is an updated slang2 definition");
+	cout << dict1.search("newSlang2") << endl;
 	// Searching by definition
 	/*vector<string> results = dict1.searchByDefinition("new slang");
 	for (const string& word : results) {
