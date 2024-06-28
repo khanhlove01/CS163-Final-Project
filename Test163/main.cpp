@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <sstream>
+#include <set>
+#include <unordered_set>
 using namespace std;
 
 struct TrieNode {
@@ -339,6 +341,86 @@ public:
 		return words[randomIndex];
 	}
 
+	tuple<string, vector<string>, int> getRandomWordWithDefinitions() const {
+		if (words.size() < 4) {
+			return { "", {"Not enough words available"}, -1 };
+		}
+
+		int randomIndex = rand() % words.size();
+		string correctWord = words[randomIndex].first;
+		string correctDefinition = words[randomIndex].second;
+
+		unordered_set<int> usedIndices = { randomIndex };
+		vector<string> definitions = { correctDefinition };
+
+		while (definitions.size() < 4) {
+			int index;
+			do {
+				index = rand() % words.size();
+			} while (usedIndices.find(index) != usedIndices.end());
+
+			usedIndices.insert(index);
+			definitions.push_back(words[index].second);
+		}
+
+		// Get the index of the correct definition before shuffling
+		int correctDefinitionIndex = 0;
+
+		// Shuffle the definitions and update the correct definition index
+		for (int i = definitions.size() - 1; i > 0; --i) {
+			int j = rand() % (i + 1);
+			swap(definitions[i], definitions[j]);
+			if (i == correctDefinitionIndex) {
+				correctDefinitionIndex = j;
+			}
+			else if (j == correctDefinitionIndex) {
+				correctDefinitionIndex = i;
+			}
+		}
+
+		return make_tuple(correctWord, definitions, correctDefinitionIndex);
+	}
+	//tuple<string, vector<string>, int> getRandomDefinitionWithKeywords() const {
+	//	if (words.size() < 4) {
+	//		return { "", {"Not enough words available"}, -1 };
+	//	}
+
+	//	int randomIndex = rand() % words.size();
+	//	string correctWord = words[randomIndex].first;
+	//	string correctDefinition = words[randomIndex].second;
+
+	//	unordered_set<int> usedIndices = { randomIndex };
+	//	vector<string> keywords = { correctWord };
+
+	//	while (keywords.size() < 4) {
+	//		int index;
+	//		do {
+	//			index = rand() % words.size();
+	//		} while (usedIndices.find(index) != usedIndices.end());
+
+	//		usedIndices.insert(index);
+	//		keywords.push_back(words[index].first);
+	//	}
+
+	//	// Get the index of the correct keyword before shuffling
+	//	int correctKeywordIndex = 0;
+
+	//	// Shuffle the keywords and update the correct keyword index
+	//	for (int i = keywords.size() - 1; i > 0; --i) {
+	//		int j = rand() % (i + 1);
+	//		swap(keywords[i], keywords[j]);
+	//		if (i == correctKeywordIndex) {
+	//			correctKeywordIndex = j;
+	//		}
+	//		else if (j == correctKeywordIndex) {
+	//			correctKeywordIndex = i;
+	//		}
+	//	}
+
+	//	return make_tuple(correctDefinition, keywords, correctKeywordIndex);
+	//}
+
+
 };
 
 int main() {
@@ -377,6 +459,32 @@ int main() {
 	for (const string& word : favourites) {
 		cout << word << endl;
 	}
+
+	// Example usage: Get a random word with four definitions and the correct index
+	auto result = dict1.getRandomWordWithDefinitions();
+	string word = std::get<0>(result);
+	vector<string> definitions = std::get<1>(result);
+	int correctIndex = std::get<2>(result);
+
+	cout << "Guess the correct definition for: " << word << endl;
+	for (int i = 0; i < definitions.size(); ++i) {
+		cout << i + 1 << ": " << definitions[i] << endl;
+	}
+
+	cout << "The correct definition is at index: " << correctIndex + 1 << endl; // Correct index is 0-based, user sees 1-based
+
+	// Example usage: Get a random definition with four keywords and the correct index
+	//auto resultOfKeywords = dict1.getRandomDefinitionWithKeywords();
+	//string definition = std::get<0>(resultOfKeywords);
+	//vector<string> keywords = std::get<1>(resultOfKeywords);
+	//int correctIndexOfRightKeywords = std::get<2>(resultOfKeywords);
+
+	//cout << "Guess the correct word for the definition: " << definition << endl;
+	//for (int i = 0; i < keywords.size(); ++i) {
+	//	cout << i + 1 << ": " << keywords[i] << endl;
+	//}
+
+	//cout << "The correct word is at index: " << correctIndexOfRightKeywords + 1 << endl; // Correct index is 0-based, user sees 1-based
 	// Example usage
 	//cout << dict1.search("BFF") << endl;
 	//dict1.addFavourite("BFF");
