@@ -359,6 +359,9 @@ void Dictionary::editDefinition(const string& word, const string& newDefinition)
         node->definition = newDefinition;
         updateFile(word, newDefinition);
     }
+    else {
+        cout << "Word not found in the dictionary." << endl;
+    }
 }
 
 void Dictionary::addFavourite(const string& word) {

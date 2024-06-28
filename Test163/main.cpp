@@ -118,7 +118,20 @@ void addNewWord(Dictionary* dict) {
     dict->insert(word, definition);
     cout << "New word added to the dictionary." << endl;
 }
-
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 6. Edit Definition
+void editDefinition(Dictionary* dict) {
+    cout << "Enter word to edit: ";
+    string word;
+    cin >> word;
+    cout << "Enter new definition: ";
+    string newDefinition;
+    cin.ignore();
+    getline(cin, newDefinition);
+    dict->editDefinition(word, newDefinition);
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -146,7 +159,7 @@ int main() {
             addNewWord(dict);
             break;
         case 6:
-            //editDefinition(dict);
+            editDefinition(dict);
             break;
         case 7:
             //removeWord(dict);
