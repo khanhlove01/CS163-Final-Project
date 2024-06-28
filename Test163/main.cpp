@@ -86,6 +86,39 @@ void searchByDefinition(Dictionary* dict) {
         cout << endl;
     }
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 4. View History
+void viewHistory(Dictionary* dict) {
+    vector<string> history = dict->viewHistory();
+    if (history.empty()) {
+        cout << "No search history available." << endl;
+    }
+    else {
+        cout << "Search History: ";
+        for (const string& word : history) {
+            cout << word << " ";
+        }
+        cout << endl;
+    }
+}
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 5. Add new word
+void addNewWord(Dictionary* dict) {
+    cout << "Enter new word: ";
+    string word;
+    cin >> word;
+    cout << "Enter definition: ";
+    string definition;
+    cin.ignore();
+    getline(cin, definition);
+    dict->insert(word, definition);
+    cout << "New word added to the dictionary." << endl;
+}
+
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -107,10 +140,10 @@ int main() {
             searchByDefinition(dict);
             break;
         case 4:
-            //viewHistory(dict);
+            viewHistory(dict);
             break;
         case 5:
-            //addNewWord(dict);
+            addNewWord(dict);
             break;
         case 6:
             //editDefinition(dict);
