@@ -173,7 +173,7 @@ void Dictionary::removeFromFile(const string& word) {
     ifstream infile(dataSetPath);
     ofstream outfile("temp.txt");
     string line;
-
+    //cout << dataSetPath << endl;
     while (getline(infile, line)) {
         istringstream iss(line);
         string existingWord, existingDefinition;
@@ -384,7 +384,7 @@ vector<string> Dictionary::viewFavourites() const {
 }
 
 void Dictionary::removeWordFromDictionary(const string& word) {
-    if (Isremoved(root, word, 0)) {
+    if (!Isremoved(root, word, 0)) {
         removeFromFile(word);
         auto it = remove_if(words.begin(), words.end(), [&](const pair<string, string>& p) { return p.first == word; });
         if (it != words.end()) {

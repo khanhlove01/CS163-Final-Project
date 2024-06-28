@@ -132,6 +132,16 @@ void editDefinition(Dictionary* dict) {
     getline(cin, newDefinition);
     dict->editDefinition(word, newDefinition);
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 7. Remove word
+void removeWord(Dictionary* dict) {
+    cout << "Enter word to remove: ";
+    string word;
+    cin >> word;
+    dict->removeWordFromDictionary(word);
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -162,7 +172,7 @@ int main() {
             editDefinition(dict);
             break;
         case 7:
-            //removeWord(dict);
+            removeWord(dict);
             break;
         case 8:
             //resetDictionary(dict, "originalslang.txt");
