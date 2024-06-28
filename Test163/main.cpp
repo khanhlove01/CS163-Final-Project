@@ -226,6 +226,32 @@ void guessCorrectDefinition(Dictionary* dict) {
         cout << "Incorrect. The correct definition is: " << definitions[correctIndex] << endl;
     }
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 13. The app can provide a random definition with four keywords, and users choose the correct word.
+void guessCorrectWord(Dictionary* dict) {
+    auto result = dict->getRandomDefinitionWithKeywords();
+    string definition = get<0>(result);
+    vector<string> keywords = get<1>(result);
+    int correctIndex = get<2>(result);
+
+    cout << "Guess the correct word for the definition: " << definition << endl;
+    for (int i = 0; i < keywords.size(); ++i) {
+        cout << i + 1 << ": " << keywords[i] << endl;
+    }
+
+    cout << "Enter your choice (1-4): ";
+    int choice;
+    cin >> choice;
+
+    if (choice - 1 == correctIndex) {
+        cout << "Correct!" << endl;
+    }
+    else {
+        cout << "Incorrect. The correct word is: " << keywords[correctIndex] << endl;
+    }
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -274,7 +300,7 @@ int main() {
             guessCorrectDefinition(dict);
             break;
         case 13:
-            //guessCorrectWord(dict);
+            guessCorrectWord(dict);
             break;
         case 0:
             cout << "Exiting..." << endl;
