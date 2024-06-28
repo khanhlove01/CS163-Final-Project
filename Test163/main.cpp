@@ -153,6 +153,62 @@ private:
 		remove(dataSetPath.c_str());
 		rename("temp.txt", dataSetPath.c_str());
 	}
+
+	// Implementation of remove function in TrieNode
+	bool Isremoved(TrieNode*& node, const string& word, int index) {
+		if (!node) return false;
+
+		if (index == word.size()) {
+			if (!node->isEndOfWord) return false;
+			node->isEndOfWord = false;
+			return node->children.empty();
+		}
+
+		char c = word[index];
+		if (!Isremoved(node->children[c], word, index + 1)) {
+			return false;
+		}
+
+		delete node->children[c];
+		node->children.erase(c);
+		return !node->isEndOfWord && node->children.empty();
+	}
+
+	// Remove a word and its definition from the file
+	void removeFromFile(const string& word) {
+		ifstream infile(dataSetPath);
+		ofstream outfile("temp.txt");
+		string line;
+
+		while (getline(infile, line)) {
+			istringstream iss(line);
+			string existingWord, existingDefinition;
+			if (dataSetPath == "slang.txt") {
+				getline(iss, existingWord, '`');
+			}
+			else if (dataSetPath == "emotional.txt.TXT") {
+				getline(iss, existingWord, '\t');
+			}
+			getline(iss, existingDefinition);
+
+			if (existingWord != word) {
+				if (dataSetPath == "slang.txt") {
+					outfile << existingWord << "`" << existingDefinition << endl;
+				}
+				else if (dataSetPath == "emotional.txt.TXT") {
+					outfile << existingWord << "\t" << existingDefinition << endl;
+				}
+			}
+		}
+
+		infile.close();
+		outfile.close();
+		remove(dataSetPath.c_str());
+		rename("temp.txt", dataSetPath.c_str());
+	}
+
+	
+
 public:
 	Dictionary(const string& path, const string& historyPath, const string& favouritePath)
 		: dataSetPath(path), historyFilePath(historyPath), favouriteFilePath(favouritePath) {
@@ -231,6 +287,11 @@ public:
 	vector<string> viewFavourites() const {
 		return favouriteList;
 	}
+	void removeWordFromDictionary(const string& word) {
+		if (!Isremoved(root, word, 0)) {
+			removeFromFile(word);
+		}
+	}
 };
 
 int main() {
@@ -263,8 +324,8 @@ int main() {
 	//cout << dict2.search("newEmotion") << endl;
 
 	// Editing a word's definition
-	dict1.editDefinition("newSlang2", "This is an updated slang2 definition");
-	cout << dict1.search("newSlang2") << endl;
+	//dict1.editDefinition("newSlang2", "This is an updated slang2 definition");
+	//cout << dict1.search("newSlang2") << endl;
 	// Searching by definition
 	/*vector<string> results = dict1.searchByDefinition("new slang");
 	for (const string& word : results) {
@@ -286,11 +347,21 @@ int main() {
 	}*/
 
 	// Viewing favourite list
-	vector<string> favourites = dict1.viewFavourites();
+	/*vector<string> favourites = dict1.viewFavourites();
 	cout << "Favourite List:" << endl;
 	for (const string& word : favourites) {
 		cout << word << endl;
-	}
+	}*/
+
+	// Removing a word
+	// Example usage: Remove a word
+	cout << dict1.search("newSlang2") << endl; // => This is an updated slang1 definition
+	dict1.removeWordFromDictionary("newSlang2");
+	cout << dict1.search("newSlang2") << endl; // => Not found
+
+	cout << dict2.search("2MFM") << endl; // => To much for me
+	dict2.removeWordFromDictionary("2MFM");
+	cout << dict2.search("2MFM") << endl; // => Not found
 
 	return 0;
 }

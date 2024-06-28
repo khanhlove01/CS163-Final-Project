@@ -7660,6 +7660,4 @@ ZZZ`Sleepy| bored| tired
 ~`Denotes Sarcasm| Put At The End Of A Word To Make It Longer
 Æ`Registered Trademark Symbol
 ô`Trademark
-newSlang1`This is an updated slang1 definition
-newSlang2`This is an updated slang2 definition
 newSlang3`This is a new slang definition
