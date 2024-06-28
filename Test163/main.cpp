@@ -142,6 +142,14 @@ void removeWord(Dictionary* dict) {
     cin >> word;
     dict->removeWordFromDictionary(word);
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 8. Reset dictionary
+void resetDictionary(Dictionary* dict, const string& originalFilePath) {
+    dict->resetToOriginal(originalFilePath);
+    cout << "Dictionary reset to original state." << endl;
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -175,7 +183,7 @@ int main() {
             removeWord(dict);
             break;
         case 8:
-            //resetDictionary(dict, "originalslang.txt");
+            resetDictionary(dict, currentDataset == "slang" ? "originalslang.txt" : "originalemotional.txt.TXT");
             break;
         case 9:
             //viewRandomWord(dict);
