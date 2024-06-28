@@ -392,3 +392,7 @@ void Dictionary::removeWordFromDictionary(const string& word) {
         }
     }
 }
+bool Dictionary::wordExists(const string& word) {
+    TrieNode* node = search(root, word, 0);
+    return node && node->isEndOfWord;
+}

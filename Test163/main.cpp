@@ -158,6 +158,48 @@ void viewRandomWord(Dictionary* dict) {
     auto word = dict->getRandomWord();
     cout << "Random Word: " << word.first << " - " << word.second << endl;
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 10.View favourites
+void viewFavourites(Dictionary* dict) {
+    vector<string> favourites = dict->viewFavourites();
+    if (favourites.empty()) {
+        cout << "No favourites available." << endl;
+    }
+    else {
+        cout << "Favourite List: ";
+        for (const string& word : favourites) {
+            cout << word << " ";
+        }
+        cout << endl;
+    }
+}
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 11. Manage Favourites
+void manageFavourites(Dictionary* dict) {
+    cout << "Enter word to add/remove from favourites: ";
+    string word;
+    cin >> word;
+
+    // Check if the word exists in the dictionary
+    if (dict->wordExists(word)) {
+        vector<string> favourites = dict->viewFavourites();
+        if (find(favourites.begin(), favourites.end(), word) != favourites.end()) {
+            dict->removeFavourite(word);
+            cout << "Word removed from favourites." << endl;
+        }
+        else {
+            dict->addFavourite(word);
+            cout << "Word added to favourites." << endl;
+        }
+    }
+    else {
+        cout << "Word not found in the dictionary." << endl;
+    }
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -197,10 +239,10 @@ int main() {
             viewRandomWord(dict);
             break;
         case 10:
-            //viewFavourites(dict);
+            viewFavourites(dict);
             break;
         case 11:
-            //manageFavourites(dict);
+            manageFavourites(dict);
             break;
         case 12:
             //guessCorrectDefinition(dict);

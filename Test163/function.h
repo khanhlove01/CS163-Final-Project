@@ -62,6 +62,7 @@ public:
     pair<string, string> getRandomWord() const;
     tuple<string, vector<string>, int> getRandomWordWithDefinitions() const;
     tuple<string, vector<string>, int> getRandomDefinitionWithKeywords() const;
+    bool wordExists(const string& word) ;
 };
 
 #endif // FUNCTION_H
