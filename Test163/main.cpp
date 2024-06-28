@@ -150,6 +150,14 @@ void resetDictionary(Dictionary* dict, const string& originalFilePath) {
     dict->resetToOriginal(originalFilePath);
     cout << "Dictionary reset to original state." << endl;
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 9. View random word
+void viewRandomWord(Dictionary* dict) {
+    auto word = dict->getRandomWord();
+    cout << "Random Word: " << word.first << " - " << word.second << endl;
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -186,7 +194,7 @@ int main() {
             resetDictionary(dict, currentDataset == "slang" ? "originalslang.txt" : "originalemotional.txt.TXT");
             break;
         case 9:
-            //viewRandomWord(dict);
+            viewRandomWord(dict);
             break;
         case 10:
             //viewFavourites(dict);
