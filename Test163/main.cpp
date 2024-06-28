@@ -25,6 +25,7 @@ private:
 	string dataSetPath;
 	string historyFilePath;
 	string favouriteFilePath;
+	vector<pair<string, string>> words; // Vector to store words and their definitions
 
 	void insert(TrieNode* node, const string& word, const string& definition, int index) {
 		if (index == word.size()) {
@@ -215,6 +216,7 @@ public:
 		root = new TrieNode();
 		loadHistoryFromFile();
 		loadFavouritesFromFile();
+		srand(time(0));
 	}
 	~Dictionary() {
 		deleteNode(root);
@@ -225,6 +227,7 @@ public:
 	void insert(const string& word, const string& definition) {
 		insert(root, word, definition, 0);
 		appendToFile(word, definition);
+		words.push_back({ word, definition });
 	}
 
 	void loadDataSet() {
@@ -241,6 +244,7 @@ public:
 			}
 			getline(iss, definition);
 			insert(root, word, definition, 0);
+			words.push_back({ word, definition });
 		}
 		infile.close();
 	}
@@ -312,6 +316,14 @@ public:
 		loadDataSet();  // Load the data from the current dataset file into the Trie
 	}
 
+	pair<string, string> getRandomWord() const {
+		if (words.empty()) {
+			return { "", "No words available" };
+		}
+		int randomIndex = rand() % words.size();
+		return words[randomIndex];
+	}
+
 };
 
 int main() {
@@ -323,6 +335,13 @@ int main() {
 	//reset
 	dict1.resetToOriginal("originalslang.txt");
 	dict2.resetToOriginal("originalemotional.txt.TXT");
+
+	// Example usage: Get a random word and its definition
+	auto randomWord1 = dict1.getRandomWord();
+	cout << "Random slang word: " << randomWord1.first << " - " << randomWord1.second << endl;
+
+	auto randomWord2 = dict2.getRandomWord();
+	cout << "Random emotional word: " << randomWord2.first << " - " << randomWord2.second << endl;
 	// Example usage
 	//cout << dict1.search("BFF") << endl;
 	//dict1.addFavourite("BFF");
