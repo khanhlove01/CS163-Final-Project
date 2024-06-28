@@ -292,6 +292,26 @@ public:
 			removeFromFile(word);
 		}
 	}
+
+	void writeDataSetToFile(const string& originalFilePath) {
+		ifstream infile(originalFilePath);
+		ofstream outfile(dataSetPath, ios::trunc);
+		string line;
+
+		while (getline(infile, line)) {
+			outfile << line << endl;
+		}
+
+		infile.close();
+		outfile.close();
+	}
+
+	void resetToOriginal(const string& originalFilePath) {
+		resetTrie();  // Reset the Trie
+		writeDataSetToFile(originalFilePath);  // Write original data to current dataset file
+		loadDataSet();  // Load the data from the current dataset file into the Trie
+	}
+
 };
 
 int main() {
@@ -300,7 +320,9 @@ int main() {
 
 	dict1.loadDataSet();
 	dict2.loadDataSet();
-
+	//reset
+	dict1.resetToOriginal("originalslang.txt");
+	dict2.resetToOriginal("originalemotional.txt.TXT");
 	// Example usage
 	//cout << dict1.search("BFF") << endl;
 	//dict1.addFavourite("BFF");
@@ -355,13 +377,13 @@ int main() {
 
 	// Removing a word
 	// Example usage: Remove a word
-	cout << dict1.search("newSlang2") << endl; // => This is an updated slang1 definition
-	dict1.removeWordFromDictionary("newSlang2");
-	cout << dict1.search("newSlang2") << endl; // => Not found
+	//cout << dict1.search("newSlang2") << endl; // => This is an updated slang1 definition
+	//dict1.removeWordFromDictionary("newSlang2");
+	//cout << dict1.search("newSlang2") << endl; // => Not found
 
-	cout << dict2.search("2MFM") << endl; // => To much for me
-	dict2.removeWordFromDictionary("2MFM");
-	cout << dict2.search("2MFM") << endl; // => Not found
+	//cout << dict2.search("2MFM") << endl; // => To much for me
+	//dict2.removeWordFromDictionary("2MFM");
+	//cout << dict2.search("2MFM") << endl; // => Not found
 
 	return 0;
 }
