@@ -200,6 +200,32 @@ void manageFavourites(Dictionary* dict) {
         cout << "Word not found in the dictionary." << endl;
     }
 }
+// ==============================================================
+// ==============================================================
+// ==============================================================
+// 12. The app can make random a word with four definitions, and users guess its meaning.
+void guessCorrectDefinition(Dictionary* dict) {
+    auto result = dict->getRandomWordWithDefinitions();
+    string word = get<0>(result);
+    vector<string> definitions = get<1>(result);
+    int correctIndex = get<2>(result);
+
+    cout << "Guess the correct definition for: " << word << endl;
+    for (int i = 0; i < definitions.size(); ++i) {
+        cout << i + 1 << ": " << definitions[i] << endl;
+    }
+
+    cout << "Enter your choice (1-4): ";
+    int choice;
+    cin >> choice;
+
+    if (choice - 1 == correctIndex) {
+        cout << "Correct!" << endl;
+    }
+    else {
+        cout << "Incorrect. The correct definition is: " << definitions[correctIndex] << endl;
+    }
+}
 int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
@@ -245,7 +271,7 @@ int main() {
             manageFavourites(dict);
             break;
         case 12:
-            //guessCorrectDefinition(dict);
+            guessCorrectDefinition(dict);
             break;
         case 13:
             //guessCorrectWord(dict);
