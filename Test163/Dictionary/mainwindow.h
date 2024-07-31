@@ -2,12 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "switchdataset.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
 }
-QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
@@ -20,7 +19,11 @@ public:
 private slots:
     void on_listWidget_clicked(const QModelIndex &index);
 
+    void on_pushButton_clicked();
+
+
 private:
     Ui::MainWindow *ui;
+    SwitchDataset *SwitchData;
 };
 #endif // MAINWINDOW_H
