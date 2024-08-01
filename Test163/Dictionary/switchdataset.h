@@ -2,6 +2,7 @@
 #define SWITCHDATASET_H
 
 #include <QMainWindow>
+#include "function.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,15 +17,19 @@ class SwitchDataset : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit SwitchDataset(MainWindow *parentWindow, QWidget *parent = nullptr);
+    explicit SwitchDataset(MainWindow *parentWindow, Dictionary* dict, QWidget *parent = nullptr);
     ~SwitchDataset();
 
 private slots:
     void on_backButton_clicked();
+    void on_englishButton_clicked();
+    void on_slangButton_clicked();
+    void on_emoteButton_clicked();
 
 private:
     Ui::SwitchDataset *ui;
     MainWindow *mainWindow;  // Pointer to the main window
+    Dictionary *dictionary;  // Pointer to the Dictionary object
 };
 
 #endif // SWITCHDATASET_H

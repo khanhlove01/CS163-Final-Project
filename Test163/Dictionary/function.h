@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -26,6 +27,8 @@ private:
     string favouriteFilePath;
     vector<pair<string, string>> words; // Vector to store words and their definitions
 
+    void insert(TrieNode* node, const string& word, const string& definition, int index);
+    void appendToFile(const string& word, const string& definition);
     void saveHistoryToFile();
     void loadHistoryFromFile();
     void saveFavouritesToFile();
@@ -35,6 +38,9 @@ private:
 public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
     ~Dictionary();
+
+    void insert(const string& word, const string& definition);
+    void loadDataSet();
 
 
 };
