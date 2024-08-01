@@ -26,8 +26,6 @@ void viewHIstory::on_backButton_clicked()
     if (mainWindow) {
         mainWindow->show();
     }
-    // this->ui->definition->clear();
-    // this->ui->lineEdit->clear();
     this->close();
 }
 

@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addwordwindow.cpp \
     function.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     viewhistory.cpp
 
 HEADERS += \
+    addwordwindow.h \
     function.h \
     mainwindow.h \
     searchdefinitionwindow.h \
@@ -26,6 +28,7 @@ HEADERS += \
     viewhistory.h
 
 FORMS += \
+    addwordwindow.ui \
     mainwindow.ui \
     searchdefinitionwindow.ui \
     searchwindow.ui \

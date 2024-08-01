@@ -8,6 +8,7 @@
 #include "searchwindow.h"
 #include "searchdefinitionwindow.h"
 #include "viewhistory.h"
+#include "addwordwindow.h"
 #include <memory>
 
 namespace Ui {
@@ -35,6 +36,7 @@ private:
     searchWindow *SearchWindow;
     searchDefinitionWindow *SearchDefinitionWindow;
     viewHIstory *ViewHistory;
+    addWordWindow * AddWordWindow;
     shared_ptr<Dictionary> dictionary;
     std::string &currentDataset; // Reference to currentDataset
 };

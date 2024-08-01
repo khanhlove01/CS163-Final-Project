@@ -2,7 +2,6 @@
 #define VIEWHISTORY_H
 
 #include <QMainWindow>
-#include <QString>
 #include <QListWidget>
 #include "function.h"
 #include <memory>
