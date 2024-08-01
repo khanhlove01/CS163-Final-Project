@@ -61,6 +61,7 @@ public:
     bool editDefinition(const string& word, const string& newDefinition);
     void removeWordFromDictionary(const string& word);
     void resetToOriginal(const string& originalFilePath);
+    pair<string, string> getRandomWord() const;
     bool wordExists(const string& word);
 
 

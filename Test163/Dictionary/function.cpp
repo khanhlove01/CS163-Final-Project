@@ -295,4 +295,12 @@ void Dictionary::writeDataSetToFile(const string& originalFilePath) {
     outfile.close();
 }
 
+pair<string, string> Dictionary::getRandomWord() const {
+    if (words.empty()) {
+        return { "", "No words available" };
+    }
+    int randomIndex = rand() % words.size();
+    return words[randomIndex];
+}
+
 

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QListWidget>
+#include <QString>
 #include "function.h"
 #include <memory>
 
@@ -19,6 +20,9 @@ class randomWord : public QMainWindow
 public:
     explicit randomWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
     ~randomWord();
+
+private slots:
+    void on_backButton_clicked();
 
 private:
     Ui::randomWord *ui;

@@ -1,5 +1,6 @@
 #include "randomword.h"
 #include "ui_randomword.h"
+#include "mainwindow.h"
 
 randomWord::randomWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
     : QMainWindow(parent),
@@ -10,9 +11,23 @@ randomWord::randomWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dic
     ui->setupUi(this);
 
     this->setStyleSheet("background-color: #ebebd3;");
+    auto word = this->dict->getRandomWord();
+    this->ui->wordLabel->setText(QString::fromStdString(word.first));
+    this->ui->definitionLabel->setText(QString::fromStdString(word.second));
+
 }
 
 randomWord::~randomWord()
 {
     delete ui;
 }
+
+void randomWord::on_backButton_clicked()
+{
+    if (mainWindow) {
+        mainWindow->show();
+    }
+
+    this->close();
+}
+

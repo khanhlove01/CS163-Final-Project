@@ -105,6 +105,10 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
         if (!RandomWord) {
             RandomWord = new randomWord(this, dictionary);
         }
+        else {
+            delete RandomWord;
+            RandomWord = new randomWord(this, dictionary);
+        }
         RandomWord->show();
         this->hide();
     }
