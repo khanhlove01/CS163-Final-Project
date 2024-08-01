@@ -6,6 +6,7 @@
 #include "switchdataset.h"
 #include "function.h"
 #include "searchwindow.h"
+#include "searchdefinitionwindow.h"
 #include <memory>
 
 namespace Ui {
@@ -31,6 +32,7 @@ private:
     Ui::MainWindow *ui;
     SwitchDataset *SwitchData;
     searchWindow *SearchWindow;
+    searchDefinitionWindow *SearchDefinitionWindow;
     shared_ptr<Dictionary> dictionary;
     std::string &currentDataset; // Reference to currentDataset
 };

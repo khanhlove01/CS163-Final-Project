@@ -7,6 +7,8 @@
 #include <fstream>
 #include <sstream>
 
+#include <iostream>
+
 using namespace std;
 
 struct TrieNode {
@@ -35,6 +37,7 @@ public:
     void saveFavouritesToFile();
     void loadFavouritesFromFile();
     void deleteNode(TrieNode*& node);
+    void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results);
 
 //public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
@@ -43,6 +46,7 @@ public:
     void insert(const string& word, const string& definition);
     void loadDataSet();
     string search(const string& word);
+    vector<string> searchByDefinition(const string& definition);
 
 
 

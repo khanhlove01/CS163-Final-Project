@@ -12,17 +12,20 @@ SOURCES += \
     function.cpp \
     main.cpp \
     mainwindow.cpp \
+    searchdefinitionwindow.cpp \
     searchwindow.cpp \
     switchdataset.cpp
 
 HEADERS += \
     function.h \
     mainwindow.h \
+    searchdefinitionwindow.h \
     searchwindow.h \
     switchdataset.h
 
 FORMS += \
     mainwindow.ui \
+    searchdefinitionwindow.ui \
     searchwindow.ui \
     switchdataset.ui
 

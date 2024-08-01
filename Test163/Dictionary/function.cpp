@@ -108,6 +108,16 @@ void Dictionary::loadDataSet() {
     infile.close();
 }
 
+void Dictionary::searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
+    if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
+        results.push_back(currentWord);
+    }
+
+    for (auto& child : node->children) {
+        searchByDefinition(child.second, definition, currentWord + child.first, results);
+    }
+}
+
 TrieNode* Dictionary::search(TrieNode* node, const string& word, int index) {
     if (index == word.size()) {
         return node;
@@ -130,5 +140,11 @@ string Dictionary::search(const string& word) {
         return node->definition;
     }
     return "Word not found";
+}
+
+vector<string> Dictionary::searchByDefinition(const string& definition) {
+    vector<string> results;
+    searchByDefinition(root, definition, "", results);
+    return results;
 }
 

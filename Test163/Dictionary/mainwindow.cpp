@@ -7,7 +7,8 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
     dictionary(dict),
     currentDataset(dataset),
     SwitchData(nullptr),
-    SearchWindow(nullptr)
+    SearchWindow(nullptr),
+    SearchDefinitionWindow(nullptr)
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #ebebd3;");
@@ -43,6 +44,14 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
             SearchWindow = new searchWindow(this, dictionary);
         }
         SearchWindow->show();
+        this->hide();
+    }
+    else if (index.row() == 2)
+    {
+        if (!SearchDefinitionWindow) {
+            SearchDefinitionWindow = new searchDefinitionWindow(this, dictionary);
+        }
+        SearchDefinitionWindow->show();
         this->hide();
     }
 }

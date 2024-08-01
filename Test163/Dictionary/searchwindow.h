@@ -27,8 +27,8 @@ private slots:
 
 private:
     Ui::searchWindow *ui;
-    MainWindow *mainWindow;  // Pointer to the main window
-    std::shared_ptr<Dictionary> dict;  // Pointer to the Dictionary object
+    MainWindow *mainWindow;
+    std::shared_ptr<Dictionary> dict;
 };
 
 #endif // SEARCHWINDOW_H

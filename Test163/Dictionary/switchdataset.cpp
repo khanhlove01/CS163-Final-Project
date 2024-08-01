@@ -6,6 +6,7 @@ SwitchDataset::SwitchDataset(MainWindow *parentWindow, std::shared_ptr<Dictionar
     : QMainWindow(parent), ui(new Ui::SwitchDataset), mainWindow(parentWindow), dictionary(dict)
 {
     ui->setupUi(this);
+    this->ui->successful->setVisible(false);
     this->setStyleSheet("background-color: #ebebd3;");
 }
 
@@ -47,11 +48,11 @@ void SwitchDataset::on_slangButton_clicked()
 
 void SwitchDataset::on_emoteButton_clicked()
 {
-    dictionary = std::make_shared<Dictionary>("slang.txt", "slang_history.txt", "slang_favourites.txt");
+    dictionary = std::make_shared<Dictionary>("emotional.txt.TXT", "emotional_history.txt", "emotional_favourites.txt");
     dictionary->loadDataSet();
     mainWindow->setDictionary(dictionary); // Notify MainWindow with the new dictionary
-    mainWindow->setCurrentDataset("slang");
-    ui->datasetName->setText("Slang dataset");
+    mainWindow->setCurrentDataset("emotional");
+    ui->datasetName->setText("Emotional dataset");
     ui->successful->setVisible(true);
     ui->datasetName->setVisible(true);
 }

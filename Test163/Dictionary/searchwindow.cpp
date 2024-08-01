@@ -34,6 +34,7 @@ void searchWindow::on_lineEdit_editingFinished()
 {
     QString input =  ui->lineEdit->text();
     string definition = this->dict->search(input.toStdString());
+    cout << definition << endl;
     qDebug() << QString::fromStdString(definition);
     this->ui->definition->setText(QString::fromStdString(definition));
 }
