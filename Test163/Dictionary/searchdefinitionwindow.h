@@ -32,6 +32,5 @@ private:
     std::shared_ptr<Dictionary> dict;
 };
 
-void displayVectorInListWidget(QListWidget* listWidget, const vector<string>& vec);
 
 #endif // SEARCHDEFINITIONWINDOW_H

@@ -9,7 +9,12 @@
 
 #include <iostream>
 
+
+#include <QListWidget>
+#include <QString>
 using namespace std;
+
+void displayVectorInListWidget(QListWidget* listWidget, const vector<string>& vec);
 
 struct TrieNode {
     unordered_map<char, TrieNode*> children;
@@ -47,6 +52,7 @@ public:
     void loadDataSet();
     string search(const string& word);
     vector<string> searchByDefinition(const string& definition);
+    vector<string> viewHistory() const;
 
 
 

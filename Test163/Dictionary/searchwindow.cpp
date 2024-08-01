@@ -26,7 +26,7 @@ void searchWindow::on_backButton_clicked()
     }
     this->ui->definition->clear();
     this->ui->lineEdit->clear();
-    this->close();  // Close the SwitchDataset window
+    this->close();
 }
 
 
@@ -34,7 +34,6 @@ void searchWindow::on_lineEdit_editingFinished()
 {
     QString input =  ui->lineEdit->text();
     string definition = this->dict->search(input.toStdString());
-    cout << definition << endl;
     qDebug() << QString::fromStdString(definition);
     this->ui->definition->setText(QString::fromStdString(definition));
 }

@@ -14,20 +14,23 @@ SOURCES += \
     mainwindow.cpp \
     searchdefinitionwindow.cpp \
     searchwindow.cpp \
-    switchdataset.cpp
+    switchdataset.cpp \
+    viewhistory.cpp
 
 HEADERS += \
     function.h \
     mainwindow.h \
     searchdefinitionwindow.h \
     searchwindow.h \
-    switchdataset.h
+    switchdataset.h \
+    viewhistory.h
 
 FORMS += \
     mainwindow.ui \
     searchdefinitionwindow.ui \
     searchwindow.ui \
-    switchdataset.ui
+    switchdataset.ui \
+    viewhistory.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

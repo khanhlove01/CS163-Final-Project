@@ -39,10 +39,5 @@ void searchDefinitionWindow::on_lineEdit_editingFinished()
         this->ui->definition->addItem("There are no word matching the definition");}
 }
 
-void displayVectorInListWidget(QListWidget* listWidget, const vector<string>& vec) {
-    listWidget->clear();
-    for (const auto& str : vec) {
-        listWidget->addItem(QString::fromStdString(str));
-    }
-}
+
 

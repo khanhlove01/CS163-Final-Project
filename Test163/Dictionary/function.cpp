@@ -1,5 +1,12 @@
 #include "function.h"
 
+void displayVectorInListWidget(QListWidget* listWidget, const vector<string>& vec) {
+    listWidget->clear();
+    for (const auto& str : vec) {
+        listWidget->addItem(QString::fromStdString(str));
+    }
+}
+
 
 Dictionary::Dictionary(const string& path, const string& historyPath, const string& favouritePath)
     : dataSetPath(path), historyFilePath(historyPath), favouriteFilePath(favouritePath) {
@@ -147,4 +154,10 @@ vector<string> Dictionary::searchByDefinition(const string& definition) {
     searchByDefinition(root, definition, "", results);
     return results;
 }
+
+vector<string> Dictionary::viewHistory() const {
+    return history;
+}
+
+
 

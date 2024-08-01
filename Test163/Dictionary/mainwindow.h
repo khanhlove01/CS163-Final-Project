@@ -7,6 +7,7 @@
 #include "function.h"
 #include "searchwindow.h"
 #include "searchdefinitionwindow.h"
+#include "viewhistory.h"
 #include <memory>
 
 namespace Ui {
@@ -33,6 +34,7 @@ private:
     SwitchDataset *SwitchData;
     searchWindow *SearchWindow;
     searchDefinitionWindow *SearchDefinitionWindow;
+    viewHIstory *ViewHistory;
     shared_ptr<Dictionary> dictionary;
     std::string &currentDataset; // Reference to currentDataset
 };
