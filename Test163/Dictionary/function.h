@@ -25,7 +25,7 @@ struct TrieNode {
 };
 
 class Dictionary {
-public:
+private:
     TrieNode* root;
     vector<string> history;
     vector<string> favouriteList;
@@ -41,10 +41,11 @@ public:
     void loadHistoryFromFile();
     void saveFavouritesToFile();
     void loadFavouritesFromFile();
+    void updateFile(const string& word, const string& newDefinition);
     void deleteNode(TrieNode*& node);
     void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results);
 
-//public:
+public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
     ~Dictionary();
 
@@ -53,6 +54,7 @@ public:
     string search(const string& word);
     vector<string> searchByDefinition(const string& definition);
     vector<string> viewHistory() const;
+    bool editDefinition(const string& word, const string& newDefinition);
 
 
 

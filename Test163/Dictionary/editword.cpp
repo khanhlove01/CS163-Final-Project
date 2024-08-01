@@ -27,3 +27,25 @@ void editWord::on_backButton_clicked()
     this->close();
 }
 
+
+void editWord::on_backButton_2_clicked()
+{
+    if (!this->ui->wordEdit->text().isEmpty() && !this->ui->definitionEdit->text().isEmpty()) {
+        string word = this->ui->wordEdit->text().toStdString();
+        string definition = this->ui->definitionEdit->text().toStdString();
+        bool res = this->dict->editDefinition(word, definition);
+        if (res) {
+            this->ui->resultLabel->clear();
+            this->ui->resultLabel->setText("Successfully update the word");
+        }
+        else {
+            this->ui->resultLabel->clear();
+            this->ui->resultLabel->setText("Word not found");
+        }
+    }
+    else {
+        this->ui->resultLabel->clear();
+        this->ui->resultLabel->setText("Please fill in both the word and definition");
+    }
+}
+

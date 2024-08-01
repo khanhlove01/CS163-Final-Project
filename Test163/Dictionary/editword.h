@@ -23,6 +23,8 @@ public:
 private slots:
     void on_backButton_clicked();
 
+    void on_backButton_2_clicked();
+
 private:
     Ui::editWord *ui;
     MainWindow *mainWindow;

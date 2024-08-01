@@ -64,6 +64,40 @@ void Dictionary::loadHistoryFromFile() {
     infile.close();
 }
 
+void Dictionary::updateFile(const string& word, const string& newDefinition) {
+    ifstream infile(dataSetPath);
+    ofstream outfile("temp.txt");
+    string line;
+
+    while (getline(infile, line)) {
+        istringstream iss(line);
+        string existingWord, existingDefinition;
+        if (dataSetPath == "slang.txt") {
+            getline(iss, existingWord, '`');
+        }
+        else if (dataSetPath == "emotional.txt.TXT") {
+            getline(iss, existingWord, '\t');
+        }
+        getline(iss, existingDefinition);
+
+        if (existingWord == word) {
+            existingDefinition = newDefinition;
+        }
+
+        if (dataSetPath == "slang.txt") {
+            outfile << existingWord << "`" << existingDefinition << endl;
+        }
+        else if (dataSetPath == "emotional.txt.TXT") {
+            outfile << existingWord << "\t" << existingDefinition << endl;
+        }
+    }
+
+    infile.close();
+    outfile.close();
+    remove(dataSetPath.c_str());
+    rename("temp.txt", dataSetPath.c_str());
+}
+
 void Dictionary::deleteNode(TrieNode*& node) {
     if (!node) return;
     for (auto& child : node->children) {
@@ -157,6 +191,18 @@ vector<string> Dictionary::searchByDefinition(const string& definition) {
 
 vector<string> Dictionary::viewHistory() const {
     return history;
+}
+
+bool Dictionary::editDefinition(const string& word, const string& newDefinition) {
+    TrieNode* node = search(root, word, 0);
+    if (node && node->isEndOfWord) {
+        node->definition = newDefinition;
+        updateFile(word, newDefinition);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 
