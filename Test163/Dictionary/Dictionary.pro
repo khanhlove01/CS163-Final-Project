@@ -12,15 +12,18 @@ SOURCES += \
     function.cpp \
     main.cpp \
     mainwindow.cpp \
+    searchwindow.cpp \
     switchdataset.cpp
 
 HEADERS += \
     function.h \
     mainwindow.h \
+    searchwindow.h \
     switchdataset.h
 
 FORMS += \
     mainwindow.ui \
+    searchwindow.ui \
     switchdataset.ui
 
 # Default rules for deployment.

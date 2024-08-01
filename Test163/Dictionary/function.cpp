@@ -1,5 +1,6 @@
 #include "function.h"
 
+
 Dictionary::Dictionary(const string& path, const string& historyPath, const string& favouritePath)
     : dataSetPath(path), historyFilePath(historyPath), favouriteFilePath(favouritePath) {
     root = new TrieNode();
@@ -106,3 +107,28 @@ void Dictionary::loadDataSet() {
     }
     infile.close();
 }
+
+TrieNode* Dictionary::search(TrieNode* node, const string& word, int index) {
+    if (index == word.size()) {
+        return node;
+    }
+
+    char c = word[index];
+    if (!node->children[c]) {
+        return nullptr;
+    }
+    return search(node->children[c], word, index + 1);
+}
+
+string Dictionary::search(const string& word) {
+
+    history.push_back(word);
+    // return word;
+    saveHistoryToFile();
+    TrieNode* node = search(root, word, 0);
+    if (node && node->isEndOfWord) {
+        return node->definition;
+    }
+    return "Word not found";
+}
+

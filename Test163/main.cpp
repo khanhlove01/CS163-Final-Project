@@ -256,7 +256,7 @@ int main() {
     string currentDataset = "slang";
     Dictionary* dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
     dict->loadDataSet();
-
+    cout << dict->getDatasetPath();
     int choice;
     do {
         displayMenu();

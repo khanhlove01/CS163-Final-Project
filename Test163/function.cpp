@@ -214,6 +214,11 @@ void Dictionary::writeDataSetToFile(const string& originalFilePath) {
     outfile.close();
 }
 
+string Dictionary::getDatasetPath()
+{
+    return this->dataSetPath;
+}
+
 void Dictionary::resetToOriginal(const string& originalFilePath) {
     resetTrie();  // Reset the Trie
     writeDataSetToFile(originalFilePath);  // Write original data to current dataset file

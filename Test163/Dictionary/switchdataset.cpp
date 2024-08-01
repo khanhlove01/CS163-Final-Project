@@ -2,14 +2,10 @@
 #include "ui_switchdataset.h"
 #include "mainwindow.h"
 
-SwitchDataset::SwitchDataset(MainWindow *parentWindow, Dictionary* dict, QWidget *parent)
-    : QMainWindow(parent),
-    ui(new Ui::SwitchDataset),
-    mainWindow(parentWindow),
-    dictionary(dict)
+SwitchDataset::SwitchDataset(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::SwitchDataset), mainWindow(parentWindow), dictionary(dict)
 {
     ui->setupUi(this);
-
     this->setStyleSheet("background-color: #ebebd3;");
 }
 
@@ -26,7 +22,7 @@ void SwitchDataset::on_backButton_clicked()
     }
     this->ui->successful->setVisible(false);
     this->ui->datasetName->setVisible(false);
-    this->close();  // Close the SwitchDataset window
+    this->hide();  // Close the SwitchDataset window
 }
 
 void SwitchDataset::on_englishButton_clicked()
@@ -39,24 +35,24 @@ void SwitchDataset::on_englishButton_clicked()
 
 void SwitchDataset::on_slangButton_clicked()
 {
-    delete this->dictionary;
-    this->dictionary = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
-    this->dictionary->loadDataSet();
+    dictionary = std::make_shared<Dictionary>("slang.txt", "slang_history.txt", "slang_favourites.txt");
+    dictionary->loadDataSet();
+    mainWindow->setDictionary(dictionary); // Notify MainWindow with the new dictionary
     mainWindow->setCurrentDataset("slang");
-    this->ui->datasetName->setText("Slang dataset");
-    this->ui->successful->setVisible(true);
-    this->ui->datasetName->setVisible(true);
+    ui->datasetName->setText("Slang dataset");
+    ui->successful->setVisible(true);
+    ui->datasetName->setVisible(true);
 }
 
 
 void SwitchDataset::on_emoteButton_clicked()
 {
-    delete this->dictionary;
-    this->dictionary = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
-    this->dictionary->loadDataSet();
+    dictionary = std::make_shared<Dictionary>("slang.txt", "slang_history.txt", "slang_favourites.txt");
+    dictionary->loadDataSet();
+    mainWindow->setDictionary(dictionary); // Notify MainWindow with the new dictionary
     mainWindow->setCurrentDataset("slang");
-    this->ui->datasetName->setText("Emote dataset");
-    this->ui->successful->setVisible(true);
-    this->ui->datasetName->setVisible(true);
+    ui->datasetName->setText("Slang dataset");
+    ui->successful->setVisible(true);
+    ui->datasetName->setVisible(true);
 }
 

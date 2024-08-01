@@ -2,8 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
 #include "switchdataset.h"
 #include "function.h"
+#include "searchwindow.h"
+#include <memory>
 
 namespace Ui {
 class MainWindow;
@@ -14,10 +17,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(Dictionary *dict, std::string &dataset, QWidget *parent = nullptr); // Add reference to currentDataset
+    MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, QWidget *parent = nullptr); // Add reference to currentDataset
     ~MainWindow();
 
     void setCurrentDataset(const std::string &dataset); // Setter for currentDataset
+    void setDictionary(shared_ptr<Dictionary> dict);
 
 private slots:
     void on_listWidget_clicked(const QModelIndex &index);
@@ -26,7 +30,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     SwitchDataset *SwitchData;
-    Dictionary *dictionary;
+    searchWindow *SearchWindow;
+    shared_ptr<Dictionary> dictionary;
     std::string &currentDataset; // Reference to currentDataset
 };
 

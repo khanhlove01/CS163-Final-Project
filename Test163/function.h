@@ -43,6 +43,9 @@ private:
     void removeFromFile(const string& word);
     void writeDataSetToFile(const string& originalFilePath);
 
+
+    
+
 public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
     ~Dictionary();
@@ -63,6 +66,8 @@ public:
     tuple<string, vector<string>, int> getRandomWordWithDefinitions() const;
     tuple<string, vector<string>, int> getRandomDefinitionWithKeywords() const;
     bool wordExists(const string& word) ;
+
+    string getDatasetPath();
 };
 
 #endif // FUNCTION_H
