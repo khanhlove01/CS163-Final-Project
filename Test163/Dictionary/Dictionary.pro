@@ -14,6 +14,7 @@ SOURCES += \
     function.cpp \
     main.cpp \
     mainwindow.cpp \
+    randomword.cpp \
     removeword.cpp \
     searchdefinitionwindow.cpp \
     searchwindow.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     editword.h \
     function.h \
     mainwindow.h \
+    randomword.h \
     removeword.h \
     searchdefinitionwindow.h \
     searchwindow.h \
@@ -35,6 +37,7 @@ FORMS += \
     addwordwindow.ui \
     editword.ui \
     mainwindow.ui \
+    randomword.ui \
     removeword.ui \
     searchdefinitionwindow.ui \
     searchwindow.ui \

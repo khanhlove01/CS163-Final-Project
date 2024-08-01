@@ -11,6 +11,7 @@
 #include "addwordwindow.h"
 #include "editword.h"
 #include "removeword.h"
+#include "randomword.h"
 #include <memory>
 
 namespace Ui {
@@ -43,6 +44,7 @@ private:
     addWordWindow *AddWordWindow;
     editWord *EditWord;
     removeWord *RemoveWord;
+    randomWord *RandomWord;
     shared_ptr<Dictionary> dictionary;
     string &currentDataset; // Reference to currentDataset
 };

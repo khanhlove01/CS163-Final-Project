@@ -12,7 +12,8 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
     ViewHistory(nullptr),
     AddWordWindow(nullptr),
     EditWord(nullptr),
-    RemoveWord(nullptr)
+    RemoveWord(nullptr),
+    RandomWord(nullptr)
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #ebebd3;");
@@ -98,6 +99,14 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
     {
         this->dictionary->resetToOriginal(currentDataset == "slang" ? "originalslang.txt" : "originalemotional.txt.TXT");
         this->ui->resetButton->setVisible(true);
+    }
+    else if (index.row() == 8)
+    {
+        if (!RandomWord) {
+            RandomWord = new randomWord(this, dictionary);
+        }
+        RandomWord->show();
+        this->hide();
     }
 }
 
