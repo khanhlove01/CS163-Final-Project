@@ -204,6 +204,29 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="resetButton">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>470</y>
+      <width>730</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>VNI-Disney</family>
+      <pointsize>21</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ebebd3; color: black; border: none;</string>
+    </property>
+    <property name="text">
+     <string>The dictionary has reset. Click here to close the text</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

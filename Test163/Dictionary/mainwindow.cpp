@@ -16,6 +16,9 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #ebebd3;");
+
+    this->ui->resetButton->setVisible(false);
+
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +35,7 @@ void MainWindow::setCurrentDataset(const std::string &dataset)
 void MainWindow::setDictionary(shared_ptr<Dictionary> dict) {
     dictionary = dict;
 }
+
 void MainWindow::on_listWidget_clicked(const QModelIndex &index)
 {
     if (index.row() == 0)
@@ -90,9 +94,22 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
         RemoveWord->show();
         this->hide();
     }
+    else if (index.row() == 7)
+    {
+        this->dictionary->resetToOriginal(currentDataset == "slang" ? "originalslang.txt" : "originalemotional.txt.TXT");
+        this->ui->resetButton->setVisible(true);
+    }
 }
 
 void MainWindow::on_pushButton_clicked()
 {
     close();
 }
+
+
+
+void MainWindow::on_resetButton_clicked()
+{
+    this->ui->resetButton->setVisible(false);
+}
+

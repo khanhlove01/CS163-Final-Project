@@ -181,6 +181,11 @@ void Dictionary::removeFromFile(const string& word) {
     rename("temp.txt", dataSetPath.c_str());
 }
 
+void Dictionary::resetTrie() {
+    deleteNode(root);
+    root = new TrieNode();
+}
+
 void Dictionary::searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
     if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
         results.push_back(currentWord);
@@ -266,9 +271,28 @@ void Dictionary::removeWordFromDictionary(const string& word) {
     }
 }
 
+void Dictionary::resetToOriginal(const string& originalFilePath) {
+    resetTrie();  // Reset the Trie
+    writeDataSetToFile(originalFilePath);  // Write original data to current dataset file
+    loadDataSet();  // Load the data from the current dataset file into the Trie
+}
+
 bool Dictionary::wordExists(const string& word) {
     TrieNode* node = search(root, word, 0);
     return node && node->isEndOfWord;
+}
+
+void Dictionary::writeDataSetToFile(const string& originalFilePath) {
+    ifstream infile(originalFilePath);
+    ofstream outfile(dataSetPath, ios::trunc);
+    string line;
+
+    while (getline(infile, line)) {
+        outfile << line << endl;
+    }
+
+    infile.close();
+    outfile.close();
 }
 
 

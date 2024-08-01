@@ -32,6 +32,8 @@ private slots:
     void on_listWidget_clicked(const QModelIndex &index);
     void on_pushButton_clicked();
 
+    void on_resetButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     SwitchDataset *SwitchData;
@@ -42,7 +44,7 @@ private:
     editWord *EditWord;
     removeWord *RemoveWord;
     shared_ptr<Dictionary> dictionary;
-    std::string &currentDataset; // Reference to currentDataset
+    string &currentDataset; // Reference to currentDataset
 };
 
 #endif // MAINWINDOW_H

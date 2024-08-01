@@ -46,6 +46,8 @@ private:
     void deleteNode(TrieNode*& node);
     void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results);
     bool Isremoved(TrieNode*& node, const string& word, int index);
+    void resetTrie();
+    void writeDataSetToFile(const string& originalFilePath);
 
 public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
@@ -58,7 +60,8 @@ public:
     vector<string> viewHistory() const;
     bool editDefinition(const string& word, const string& newDefinition);
     void removeWordFromDictionary(const string& word);
-    bool wordExists(const string& word) ;
+    void resetToOriginal(const string& originalFilePath);
+    bool wordExists(const string& word);
 
 
 
