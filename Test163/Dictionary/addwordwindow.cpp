@@ -23,6 +23,7 @@ void addWordWindow::on_backButton_clicked()
     if (mainWindow) {
         mainWindow->show();
     }
+    this->ui->resultLabel->clear();
     this->close();
 }
 
@@ -30,7 +31,15 @@ void addWordWindow::on_backButton_clicked()
 void addWordWindow::on_backButton_2_clicked()
 {
     if (!this->ui->wordEdit->text().isEmpty() && !this->ui->definitionEdit->text().isEmpty()) {
-
+        string word = this->ui->wordEdit->text().toStdString();
+        string definition = this->ui->definitionEdit->text().toStdString();
+        this->dict->insert(word, definition);
+        this->ui->resultLabel->clear();
+        this->ui->resultLabel->setText("Successfully insert new word");
+    }
+    else {
+        this->ui->resultLabel->clear();
+        this->ui->resultLabel->setText("Please fill in both the word and definition");
     }
 }
 
