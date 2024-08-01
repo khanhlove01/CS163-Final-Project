@@ -9,7 +9,8 @@
 #include "searchdefinitionwindow.h"
 #include "viewhistory.h"
 #include "addwordwindow.h"
-#include  "editword.h"
+#include "editword.h"
+#include "removeword.h"
 #include <memory>
 
 namespace Ui {
@@ -39,6 +40,7 @@ private:
     viewHIstory *ViewHistory;
     addWordWindow *AddWordWindow;
     editWord *EditWord;
+    removeWord *RemoveWord;
     shared_ptr<Dictionary> dictionary;
     std::string &currentDataset; // Reference to currentDataset
 };

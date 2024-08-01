@@ -14,6 +14,7 @@ SOURCES += \
     function.cpp \
     main.cpp \
     mainwindow.cpp \
+    removeword.cpp \
     searchdefinitionwindow.cpp \
     searchwindow.cpp \
     switchdataset.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     editword.h \
     function.h \
     mainwindow.h \
+    removeword.h \
     searchdefinitionwindow.h \
     searchwindow.h \
     switchdataset.h \
@@ -33,6 +35,7 @@ FORMS += \
     addwordwindow.ui \
     editword.ui \
     mainwindow.ui \
+    removeword.ui \
     searchdefinitionwindow.ui \
     searchwindow.ui \
     switchdataset.ui \

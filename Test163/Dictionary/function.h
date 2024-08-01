@@ -42,8 +42,10 @@ private:
     void saveFavouritesToFile();
     void loadFavouritesFromFile();
     void updateFile(const string& word, const string& newDefinition);
+    void removeFromFile(const string& word);
     void deleteNode(TrieNode*& node);
     void searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results);
+    bool Isremoved(TrieNode*& node, const string& word, int index);
 
 public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
@@ -55,6 +57,7 @@ public:
     vector<string> searchByDefinition(const string& definition);
     vector<string> viewHistory() const;
     bool editDefinition(const string& word, const string& newDefinition);
+    void removeWordFromDictionary(const string& word);
 
 
 

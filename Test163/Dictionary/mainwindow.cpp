@@ -11,7 +11,8 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
     SearchDefinitionWindow(nullptr),
     ViewHistory(nullptr),
     AddWordWindow(nullptr),
-    EditWord(nullptr)
+    EditWord(nullptr),
+    RemoveWord(nullptr)
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #ebebd3;");
@@ -79,6 +80,14 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
             EditWord = new editWord(this, dictionary);
         }
         EditWord->show();
+        this->hide();
+    }
+    else if (index.row() == 6)
+    {
+        if (!RemoveWord) {
+            RemoveWord = new removeWord(this, dictionary);
+        }
+        RemoveWord->show();
         this->hide();
     }
 }
