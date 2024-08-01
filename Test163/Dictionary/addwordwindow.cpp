@@ -33,6 +33,12 @@ void addWordWindow::on_backButton_2_clicked()
     if (!this->ui->wordEdit->text().isEmpty() && !this->ui->definitionEdit->text().isEmpty()) {
         string word = this->ui->wordEdit->text().toStdString();
         string definition = this->ui->definitionEdit->text().toStdString();
+        string res = this->dict->search(word);
+        if (res != "Word not found") {
+            this->ui->resultLabel->clear();
+            this->ui->resultLabel->setText("The word is already in the dictionary");
+            return;
+        }
         this->dict->insert(word, definition);
         this->ui->resultLabel->clear();
         this->ui->resultLabel->setText("Successfully insert new word");

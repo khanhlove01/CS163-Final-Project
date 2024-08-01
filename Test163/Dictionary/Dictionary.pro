@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addwordwindow.cpp \
+    editword.cpp \
     function.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     addwordwindow.h \
+    editword.h \
     function.h \
     mainwindow.h \
     searchdefinitionwindow.h \
@@ -29,6 +31,7 @@ HEADERS += \
 
 FORMS += \
     addwordwindow.ui \
+    editword.ui \
     mainwindow.ui \
     searchdefinitionwindow.ui \
     searchwindow.ui \

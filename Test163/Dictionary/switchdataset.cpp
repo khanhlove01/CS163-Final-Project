@@ -23,7 +23,7 @@ void SwitchDataset::on_backButton_clicked()
     }
     this->ui->successful->setVisible(false);
     this->ui->datasetName->setVisible(false);
-    this->hide();  // Close the SwitchDataset window
+    this->close();  // Close the SwitchDataset window
 }
 
 void SwitchDataset::on_englishButton_clicked()
