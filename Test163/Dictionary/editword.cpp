@@ -23,7 +23,9 @@ void editWord::on_backButton_clicked()
     if (mainWindow) {
         mainWindow->show();
     }
-
+    this->ui->resultLabel->clear();
+    this->ui->definitionEdit->clear();
+    this->ui->wordEdit->clear();
     this->close();
 }
 

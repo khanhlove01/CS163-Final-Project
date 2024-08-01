@@ -24,6 +24,8 @@ public:
 private slots:
     void on_backButton_clicked();
 
+    void on_wordEdit_editingFinished();
+
 private:
     Ui::removeWord *ui;
     MainWindow *mainWindow;

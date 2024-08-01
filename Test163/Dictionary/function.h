@@ -58,6 +58,7 @@ public:
     vector<string> viewHistory() const;
     bool editDefinition(const string& word, const string& newDefinition);
     void removeWordFromDictionary(const string& word);
+    bool wordExists(const string& word) ;
 
 
 

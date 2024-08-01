@@ -31,7 +31,7 @@
      </font>
     </property>
     <property name="text">
-     <string>View History</string>
+     <string>Add New Word And Definition</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
