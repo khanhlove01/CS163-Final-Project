@@ -67,6 +67,7 @@ public:
     void addFavourite(const string& word);
     void removeFavourite(const string& word);
     tuple<string, vector<string>, int> getRandomWordWithDefinitions() const;
+    tuple<string, vector<string>, int> getRandomDefinitionWithKeywords() const;
     bool wordExists(const string& word);
 
 

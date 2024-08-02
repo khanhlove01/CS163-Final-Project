@@ -22,6 +22,17 @@ public:
     explicit guessWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
     ~guessWord();
 
+private slots:
+    void on_backButton_clicked();
+
+    void on_answer4_clicked();
+
+    void on_answer1_clicked();
+
+    void on_answer2_clicked();
+
+    void on_answer3_clicked();
+
 private:
     Ui::guessWord *ui;
     MainWindow *mainWindow;

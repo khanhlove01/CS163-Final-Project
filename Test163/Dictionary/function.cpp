@@ -360,4 +360,41 @@ tuple<string, vector<string>, int> Dictionary::getRandomWordWithDefinitions() co
     return make_tuple(correctWord, definitions, correctDefinitionIndex);
 }
 
+tuple<string, vector<string>, int> Dictionary::getRandomDefinitionWithKeywords() const {
+    if (words.size() < 4) {
+        return { "", {"Not enough words available"}, -1 };
+    }
+
+    int randomIndex = rand() % words.size();
+    string correctWord = words[randomIndex].first;
+    string correctDefinition = words[randomIndex].second;
+
+    unordered_set<int> usedIndices = { randomIndex };
+    vector<string> keywords = { correctWord };
+
+    while (keywords.size() < 4) {
+        int index;
+        do {
+            index = rand() % words.size();
+        } while (usedIndices.find(index) != usedIndices.end());
+
+        usedIndices.insert(index);
+        keywords.push_back(words[index].first);
+    }
+
+    int correctKeywordIndex = 0;
+
+    for (int i = keywords.size() - 1; i > 0; --i) {
+        int j = rand() % (i + 1);
+        swap(keywords[i], keywords[j]);
+        if (i == correctKeywordIndex) {
+            correctKeywordIndex = j;
+        }
+        else if (j == correctKeywordIndex) {
+            correctKeywordIndex = i;
+        }
+    }
+
+    return make_tuple(correctDefinition, keywords, correctKeywordIndex);
+}
 
