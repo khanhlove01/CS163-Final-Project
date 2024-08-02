@@ -15,6 +15,7 @@
 #include "viewfavorites.h"
 #include "managefavorites.h"
 #include "guessdefinition.h"
+#include "guessword.h"
 
 #include <memory>
 
@@ -52,6 +53,7 @@ private:
     viewFavorites *ViewFavorites;
     manageFavorites *ManageFavorites;
     guessDefinition *GuessDefinition;
+    guessWord *GuessWord;
 
     shared_ptr<Dictionary> dictionary;
     string &currentDataset; // Reference to currentDataset

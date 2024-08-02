@@ -13,6 +13,7 @@ SOURCES += \
     editword.cpp \
     function.cpp \
     guessdefinition.cpp \
+    guessword.cpp \
     main.cpp \
     mainwindow.cpp \
     managefavorites.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     editword.h \
     function.h \
     guessdefinition.h \
+    guessword.h \
     mainwindow.h \
     managefavorites.h \
     randomword.h \
@@ -43,6 +45,7 @@ FORMS += \
     addwordwindow.ui \
     editword.ui \
     guessdefinition.ui \
+    guessword.ui \
     mainwindow.ui \
     managefavorites.ui \
     randomword.ui \

@@ -15,7 +15,10 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
     RemoveWord(nullptr),
     RandomWord(nullptr),
     ViewFavorites(nullptr),
-    ManageFavorites(nullptr)
+    ManageFavorites(nullptr),
+    GuessDefinition(nullptr),
+    GuessWord(nullptr)
+
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #ebebd3;");
@@ -140,6 +143,18 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
             GuessDefinition = new guessDefinition(this, dictionary);
         }
         GuessDefinition->show();
+        this->hide();
+    }
+    else if (index.row() == 12)
+    {
+        if (!GuessWord) {
+            GuessWord = new guessWord(this, dictionary);
+        }
+        else {
+            delete GuessWord;
+            GuessWord = new guessWord(this, dictionary);
+        }
+        GuessWord->show();
         this->hide();
     }
 }
