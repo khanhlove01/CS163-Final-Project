@@ -7,7 +7,6 @@
 #include "function.h"
 #include <memory>
 
-
 namespace Ui {
 class guessWord;
 }

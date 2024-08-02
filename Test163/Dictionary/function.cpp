@@ -7,19 +7,16 @@ void displayVectorInListWidget(QListWidget* listWidget, const vector<string>& ve
     }
 }
 
+TrieNode* Dictionary::search(TrieNode* node, const string& word, int index) {
+    if (index == word.size()) {
+        return node;
+    }
 
-Dictionary::Dictionary(const string& path, const string& historyPath, const string& favouritePath)
-    : dataSetPath(path), historyFilePath(historyPath), favouriteFilePath(favouritePath) {
-    root = new TrieNode();
-    loadHistoryFromFile();
-    loadFavouritesFromFile();
-    srand(time(0));
-}
-
-Dictionary::~Dictionary() {
-    deleteNode(root);
-    saveHistoryToFile();
-    saveFavouritesToFile();
+    char c = word[index];
+    if (!node->children[c]) {
+        return nullptr;
+    }
+    return search(node->children[c], word, index + 1);
 }
 
 void Dictionary::insert(TrieNode* node, const string& word, const string& definition, int index) {
@@ -64,6 +61,23 @@ void Dictionary::loadHistoryFromFile() {
     infile.close();
 }
 
+void Dictionary::saveFavouritesToFile() {
+    ofstream outfile(favouriteFilePath);
+    for (const auto& word : favouriteList) {
+        outfile << word << endl;
+    }
+    outfile.close();
+}
+
+void Dictionary::loadFavouritesFromFile() {
+    ifstream infile(favouriteFilePath);
+    string word;
+    while (getline(infile, word)) {
+        favouriteList.push_back(word);
+    }
+    infile.close();
+}
+
 void Dictionary::updateFile(const string& word, const string& newDefinition) {
     ifstream infile(dataSetPath);
     ofstream outfile("temp.txt");
@@ -98,57 +112,6 @@ void Dictionary::updateFile(const string& word, const string& newDefinition) {
     rename("temp.txt", dataSetPath.c_str());
 }
 
-void Dictionary::deleteNode(TrieNode*& node) {
-    if (!node) return;
-    for (auto& child : node->children) {
-        deleteNode(child.second);
-    }
-    delete node;
-    node = nullptr;
-}
-
-void Dictionary::saveFavouritesToFile() {
-    ofstream outfile(favouriteFilePath);
-    for (const auto& word : favouriteList) {
-        outfile << word << endl;
-    }
-    outfile.close();
-}
-
-void Dictionary::loadFavouritesFromFile() {
-    ifstream infile(favouriteFilePath);
-    string word;
-    while (getline(infile, word)) {
-        favouriteList.push_back(word);
-    }
-    infile.close();
-}
-
-void Dictionary::insert(const string& word, const string& definition) {
-    insert(root, word, definition, 0);
-    appendToFile(word, definition);
-    words.push_back({ word, definition });
-}
-
-void Dictionary::loadDataSet() {
-    ifstream infile(dataSetPath);
-    string line;
-    while (getline(infile, line)) {
-        istringstream iss(line);
-        string word, definition;
-        if (dataSetPath == "slang.txt") {
-            getline(iss, word, '`');
-        }
-        else if (dataSetPath == "emotional.txt.TXT") {
-            getline(iss, word, '\t');
-        }
-        getline(iss, definition);
-        insert(root, word, definition, 0);
-        words.push_back({ word, definition });
-    }
-    infile.close();
-}
-
 void Dictionary::removeFromFile(const string& word) {
     ifstream infile(dataSetPath);
     ofstream outfile("temp.txt");
@@ -181,9 +144,13 @@ void Dictionary::removeFromFile(const string& word) {
     rename("temp.txt", dataSetPath.c_str());
 }
 
-void Dictionary::resetTrie() {
-    deleteNode(root);
-    root = new TrieNode();
+void Dictionary::deleteNode(TrieNode*& node) {
+    if (!node) return;
+    for (auto& child : node->children) {
+        deleteNode(child.second);
+    }
+    delete node;
+    node = nullptr;
 }
 
 void Dictionary::searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
@@ -215,16 +182,66 @@ bool Dictionary::Isremoved(TrieNode*& node, const string& word, int index) {
     return !node->isEndOfWord && node->children.empty();
 }
 
-TrieNode* Dictionary::search(TrieNode* node, const string& word, int index) {
-    if (index == word.size()) {
-        return node;
+void Dictionary::resetTrie() {
+    deleteNode(root);
+    root = new TrieNode();
+}
+
+void Dictionary::writeDataSetToFile(const string& originalFilePath) {
+    ifstream infile(originalFilePath);
+    ofstream outfile(dataSetPath, ios::trunc);
+    string line;
+
+    while (getline(infile, line)) {
+        outfile << line << endl;
     }
 
-    char c = word[index];
-    if (!node->children[c]) {
-        return nullptr;
+    infile.close();
+    outfile.close();
+}
+
+Dictionary::Dictionary(const string& path, const string& historyPath, const string& favouritePath)
+    : dataSetPath(path), historyFilePath(historyPath), favouriteFilePath(favouritePath) {
+    root = new TrieNode();
+    loadHistoryFromFile();
+    loadFavouritesFromFile();
+    srand(time(0));
+}
+
+Dictionary::~Dictionary() {
+    deleteNode(root);
+    saveHistoryToFile();
+    saveFavouritesToFile();
+}
+
+void Dictionary::insert(const string& word, const string& definition) {
+    insert(root, word, definition, 0);
+    appendToFile(word, definition);
+    words.push_back({ word, definition });
+}
+
+void Dictionary::loadDataSet() {
+    ifstream infile(dataSetPath);
+    string line;
+    while (getline(infile, line)) {
+        istringstream iss(line);
+        string word, definition;
+        if (dataSetPath == "slang.txt") {
+            getline(iss, word, '`');
+        }
+        else if (dataSetPath == "emotional.txt.TXT") {
+            getline(iss, word, '\t');
+        }
+        getline(iss, definition);
+        insert(root, word, definition, 0);
+        words.push_back({ word, definition });
     }
-    return search(node->children[c], word, index + 1);
+    infile.close();
+}
+
+bool Dictionary::wordExists(const string& word) {
+    TrieNode* node = search(root, word, 0);
+    return node && node->isEndOfWord;
 }
 
 string Dictionary::search(const string& word) {
@@ -275,24 +292,6 @@ void Dictionary::resetToOriginal(const string& originalFilePath) {
     resetTrie();  // Reset the Trie
     writeDataSetToFile(originalFilePath);  // Write original data to current dataset file
     loadDataSet();  // Load the data from the current dataset file into the Trie
-}
-
-bool Dictionary::wordExists(const string& word) {
-    TrieNode* node = search(root, word, 0);
-    return node && node->isEndOfWord;
-}
-
-void Dictionary::writeDataSetToFile(const string& originalFilePath) {
-    ifstream infile(originalFilePath);
-    ofstream outfile(dataSetPath, ios::trunc);
-    string line;
-
-    while (getline(infile, line)) {
-        outfile << line << endl;
-    }
-
-    infile.close();
-    outfile.close();
 }
 
 pair<string, string> Dictionary::getRandomWord() const {

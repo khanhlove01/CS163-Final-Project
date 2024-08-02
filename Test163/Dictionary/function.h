@@ -56,6 +56,7 @@ public:
 
     void insert(const string& word, const string& definition);
     void loadDataSet();
+    bool wordExists(const string& word);
     string search(const string& word);
     vector<string> searchByDefinition(const string& definition);
     vector<string> viewHistory() const;
@@ -68,7 +69,6 @@ public:
     void removeFavourite(const string& word);
     tuple<string, vector<string>, int> getRandomWordWithDefinitions() const;
     tuple<string, vector<string>, int> getRandomDefinitionWithKeywords() const;
-    bool wordExists(const string& word);
 
 
 
