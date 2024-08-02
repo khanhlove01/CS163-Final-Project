@@ -14,7 +14,8 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
     EditWord(nullptr),
     RemoveWord(nullptr),
     RandomWord(nullptr),
-    ViewFavorites(nullptr)
+    ViewFavorites(nullptr),
+    ManageFavorites(nullptr)
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #ebebd3;");
@@ -119,6 +120,14 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
             ViewFavorites = new viewFavorites(this, dictionary);
         }
         ViewFavorites->show();
+        this->hide();
+    }
+    else if (index.row() == 10)
+    {
+        if (!ManageFavorites) {
+            ManageFavorites = new manageFavorites(this, dictionary);
+        }
+        ManageFavorites->show();
         this->hide();
     }
 }
