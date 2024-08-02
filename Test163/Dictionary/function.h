@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <unordered_set>
 
 #include <iostream>
 
@@ -65,6 +66,7 @@ public:
     vector<string> viewFavourites() const;
     void addFavourite(const string& word);
     void removeFavourite(const string& word);
+    tuple<string, vector<string>, int> getRandomWordWithDefinitions() const;
     bool wordExists(const string& word);
 
 

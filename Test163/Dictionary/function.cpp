@@ -322,3 +322,42 @@ void Dictionary::removeFavourite(const string& word) {
     }
 }
 
+tuple<string, vector<string>, int> Dictionary::getRandomWordWithDefinitions() const {
+    if (words.size() < 4) {
+        return { "", {"Not enough words available"}, -1 };
+    }
+
+    int randomIndex = rand() % words.size();
+    string correctWord = words[randomIndex].first;
+    string correctDefinition = words[randomIndex].second;
+
+    unordered_set<int> usedIndices = { randomIndex };
+    vector<string> definitions = { correctDefinition };
+
+    while (definitions.size() < 4) {
+        int index;
+        do {
+            index = rand() % words.size();
+        } while (usedIndices.find(index) != usedIndices.end());
+
+        usedIndices.insert(index);
+        definitions.push_back(words[index].second);
+    }
+
+    int correctDefinitionIndex = 0;
+
+    for (int i = definitions.size() - 1; i > 0; --i) {
+        int j = rand() % (i + 1);
+        swap(definitions[i], definitions[j]);
+        if (i == correctDefinitionIndex) {
+            correctDefinitionIndex = j;
+        }
+        else if (j == correctDefinitionIndex) {
+            correctDefinitionIndex = i;
+        }
+    }
+
+    return make_tuple(correctWord, definitions, correctDefinitionIndex);
+}
+
+

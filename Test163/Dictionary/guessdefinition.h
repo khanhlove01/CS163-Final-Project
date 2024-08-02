@@ -24,10 +24,20 @@ public:
 private slots:
     void on_backButton_clicked();
 
+    void on_answer4_clicked();
+
+    void on_answer1_clicked();
+
+    void on_answer2_clicked();
+
+    void on_answer3_clicked();
+
 private:
     Ui::guessDefinition *ui;
     MainWindow *mainWindow;
     std::shared_ptr<Dictionary> dict;
+    int correctIndex;
+    vector<string> definitions;
 };
 
 #endif // GUESSDEFINITION_H

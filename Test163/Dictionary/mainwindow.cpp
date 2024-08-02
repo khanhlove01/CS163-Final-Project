@@ -135,6 +135,10 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
         if (!GuessDefinition) {
             GuessDefinition = new guessDefinition(this, dictionary);
         }
+        else {
+            delete GuessDefinition;
+            GuessDefinition = new guessDefinition(this, dictionary);
+        }
         GuessDefinition->show();
         this->hide();
     }
