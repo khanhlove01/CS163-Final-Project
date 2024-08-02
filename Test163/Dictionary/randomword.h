@@ -24,6 +24,8 @@ public:
 private slots:
     void on_backButton_clicked();
 
+    void on_anotherWordButton_clicked();
+
 private:
     Ui::randomWord *ui;
     MainWindow *mainWindow;

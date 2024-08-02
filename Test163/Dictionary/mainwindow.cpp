@@ -30,8 +30,21 @@ MainWindow::MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, Q
 MainWindow::~MainWindow()
 {
     delete ui;
+
     if (SwitchData) delete SwitchData;
+    if (SearchWindow) delete SearchWindow;
+    if (SearchDefinitionWindow) delete SearchDefinitionWindow;
+    if (ViewHistory) delete ViewHistory;
+    if (AddWordWindow) delete AddWordWindow;
+    if (EditWord) delete EditWord;
+    if (RemoveWord) delete RemoveWord;
+    if (RandomWord) delete RandomWord;
+    if (ViewFavorites) delete ViewFavorites;
+    if (ManageFavorites) delete ManageFavorites;
+    if (GuessDefinition) delete GuessDefinition;
+    if (GuessWord) delete GuessWord;
 }
+
 
 void MainWindow::setCurrentDataset(const std::string &dataset)
 {
@@ -71,6 +84,10 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
     else if (index.row() == 3)
     {
         if (!ViewHistory) {
+            ViewHistory = new viewHIstory(this, dictionary);
+        }
+        else {
+            delete ViewHistory;
             ViewHistory = new viewHIstory(this, dictionary);
         }
         ViewHistory->show();
@@ -120,6 +137,10 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
     else if (index.row() == 9)
     {
         if (!ViewFavorites) {
+            ViewFavorites = new viewFavorites(this, dictionary);
+        }
+        else {
+            delete ViewFavorites;
             ViewFavorites = new viewFavorites(this, dictionary);
         }
         ViewFavorites->show();

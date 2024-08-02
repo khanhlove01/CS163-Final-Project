@@ -31,3 +31,11 @@ void randomWord::on_backButton_clicked()
     this->close();
 }
 
+
+void randomWord::on_anotherWordButton_clicked()
+{
+    auto word = this->dict->getRandomWord();
+    this->ui->wordLabel->setText(QString::fromStdString(word.first));
+    this->ui->definitionLabel->setText(QString::fromStdString(word.second));
+}
+
