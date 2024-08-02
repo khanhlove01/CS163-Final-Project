@@ -63,6 +63,8 @@ public:
     void resetToOriginal(const string& originalFilePath);
     pair<string, string> getRandomWord() const;
     vector<string> viewFavourites() const;
+    void addFavourite(const string& word);
+    void removeFavourite(const string& word);
     bool wordExists(const string& word);
 
 

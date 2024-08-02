@@ -307,4 +307,18 @@ vector<string> Dictionary::viewFavourites() const {
     return favouriteList;
 }
 
+void Dictionary::addFavourite(const string& word) {
+    if (find(favouriteList.begin(), favouriteList.end(), word) == favouriteList.end()) {
+        favouriteList.push_back(word);
+        saveFavouritesToFile();
+    }
+}
+
+void Dictionary::removeFavourite(const string& word) {
+    auto it = find(favouriteList.begin(), favouriteList.end(), word);
+    if (it != favouriteList.end()) {
+        favouriteList.erase(it);
+        saveFavouritesToFile();
+    }
+}
 
