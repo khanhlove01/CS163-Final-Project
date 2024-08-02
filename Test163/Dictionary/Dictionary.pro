@@ -19,6 +19,7 @@ SOURCES += \
     searchdefinitionwindow.cpp \
     searchwindow.cpp \
     switchdataset.cpp \
+    viewfavorites.cpp \
     viewhistory.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     searchdefinitionwindow.h \
     searchwindow.h \
     switchdataset.h \
+    viewfavorites.h \
     viewhistory.h
 
 FORMS += \
@@ -42,6 +44,7 @@ FORMS += \
     searchdefinitionwindow.ui \
     searchwindow.ui \
     switchdataset.ui \
+    viewfavorites.ui \
     viewhistory.ui
 
 # Default rules for deployment.

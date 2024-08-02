@@ -62,6 +62,7 @@ public:
     void removeWordFromDictionary(const string& word);
     void resetToOriginal(const string& originalFilePath);
     pair<string, string> getRandomWord() const;
+    vector<string> viewFavourites() const;
     bool wordExists(const string& word);
 
 

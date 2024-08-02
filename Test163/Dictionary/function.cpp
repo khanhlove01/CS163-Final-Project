@@ -303,4 +303,8 @@ pair<string, string> Dictionary::getRandomWord() const {
     return words[randomIndex];
 }
 
+vector<string> Dictionary::viewFavourites() const {
+    return favouriteList;
+}
+
 

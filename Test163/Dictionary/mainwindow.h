@@ -12,6 +12,7 @@
 #include "editword.h"
 #include "removeword.h"
 #include "randomword.h"
+#include "viewfavorites.h"
 #include <memory>
 
 namespace Ui {
@@ -45,6 +46,8 @@ private:
     editWord *EditWord;
     removeWord *RemoveWord;
     randomWord *RandomWord;
+    viewFavorites *ViewFavorites;
+
     shared_ptr<Dictionary> dictionary;
     string &currentDataset; // Reference to currentDataset
 };
