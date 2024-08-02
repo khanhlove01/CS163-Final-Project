@@ -17,7 +17,7 @@ class manageFavorites : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit manageFavorites(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit manageFavorites(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~manageFavorites();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::manageFavorites *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // MANAGEFAVORITES_H

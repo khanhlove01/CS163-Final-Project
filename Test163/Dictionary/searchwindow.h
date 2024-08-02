@@ -17,7 +17,7 @@ class searchWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit searchWindow(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit searchWindow(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~searchWindow();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::searchWindow *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // SEARCHWINDOW_H

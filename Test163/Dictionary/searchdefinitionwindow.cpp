@@ -2,7 +2,7 @@
 #include "ui_searchdefinitionwindow.h"
 #include "mainwindow.h"
 
-searchDefinitionWindow::searchDefinitionWindow(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+searchDefinitionWindow::searchDefinitionWindow(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::searchDefinitionWindow),
     mainWindow(parentWindow),

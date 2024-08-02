@@ -18,7 +18,7 @@ class guessDefinition : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit guessDefinition(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit guessDefinition(MainWindow *parentWindow, Dictionary*& dict, QWidget *parent = nullptr);
     ~guessDefinition();
 
 private slots:
@@ -39,7 +39,7 @@ private slots:
 private:
     Ui::guessDefinition *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
     int correctIndex;
     vector<string> definitions;
 };

@@ -28,11 +28,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(std::shared_ptr<Dictionary> dict, std::string &dataset, QWidget *parent = nullptr); // Add reference to currentDataset
+    MainWindow(Dictionary *&dict, std::string &dataset, QWidget *parent = nullptr); // Add reference to currentDataset
     ~MainWindow();
 
     void setCurrentDataset(const std::string &dataset); // Setter for currentDataset
-    void setDictionary(shared_ptr<Dictionary> dict);
+    void setDictionary(Dictionary* dict);
 
 private slots:
     void on_listWidget_clicked(const QModelIndex &index);
@@ -55,7 +55,7 @@ private:
     guessDefinition *GuessDefinition;
     guessWord *GuessWord;
 
-    shared_ptr<Dictionary> dictionary;
+    Dictionary* dictionary;
     string &currentDataset; // Reference to currentDataset
 };
 

@@ -2,7 +2,7 @@
 #include "ui_editword.h"
 #include "mainwindow.h"
 
-editWord::editWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+editWord::editWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::editWord),
     mainWindow(parentWindow),

@@ -2,7 +2,7 @@
 #include "ui_switchdataset.h"
 #include "mainwindow.h"
 
-SwitchDataset::SwitchDataset(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+SwitchDataset::SwitchDataset(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::SwitchDataset), mainWindow(parentWindow), dictionary(dict)
 {
     ui->setupUi(this);
@@ -36,9 +36,10 @@ void SwitchDataset::on_englishButton_clicked()
 
 void SwitchDataset::on_slangButton_clicked()
 {
-    dictionary = std::make_shared<Dictionary>("slang.txt", "slang_history.txt", "slang_favourites.txt");
+    delete dictionary;
+    dictionary = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
     dictionary->loadDataSet();
-    mainWindow->setDictionary(dictionary); // Notify MainWindow with the new dictionary
+    mainWindow->setDictionary(dictionary);
     mainWindow->setCurrentDataset("slang");
     ui->datasetName->setText("Slang dataset");
     ui->successful->setVisible(true);
@@ -48,9 +49,10 @@ void SwitchDataset::on_slangButton_clicked()
 
 void SwitchDataset::on_emoteButton_clicked()
 {
-    dictionary = std::make_shared<Dictionary>("emotional.txt.TXT", "emotional_history.txt", "emotional_favourites.txt");
+    delete dictionary;
+    dictionary = new Dictionary("emotional.txt.TXT", "emotional_history.txt", "emotional_favourites.txt");
     dictionary->loadDataSet();
-    mainWindow->setDictionary(dictionary); // Notify MainWindow with the new dictionary
+    mainWindow->setDictionary(dictionary);
     mainWindow->setCurrentDataset("emotional");
     ui->datasetName->setText("Emotional dataset");
     ui->successful->setVisible(true);

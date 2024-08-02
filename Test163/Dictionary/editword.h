@@ -17,7 +17,7 @@ class editWord : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit editWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit editWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~editWord();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::editWord *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // EDITWORD_H

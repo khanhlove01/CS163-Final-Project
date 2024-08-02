@@ -16,7 +16,7 @@ class viewHIstory : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit viewHIstory(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit viewHIstory(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~viewHIstory();
 
 private slots:
@@ -25,7 +25,7 @@ private slots:
 private:
     Ui::viewHIstory *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 

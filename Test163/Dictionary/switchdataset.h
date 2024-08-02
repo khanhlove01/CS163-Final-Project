@@ -18,7 +18,7 @@ class SwitchDataset : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit SwitchDataset(MainWindow *parentWindow, shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit SwitchDataset(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~SwitchDataset();
 
 private slots:
@@ -30,7 +30,7 @@ private slots:
 private:
     Ui::SwitchDataset *ui;
     MainWindow *mainWindow;  // Pointer to the main window
-    std::shared_ptr<Dictionary> dictionary;  // Pointer to the Dictionary object
+    Dictionary* dictionary;  // Pointer to the Dictionary object
 };
 
 #endif // SWITCHDATASET_H

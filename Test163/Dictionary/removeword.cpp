@@ -2,7 +2,7 @@
 #include "ui_removeword.h"
 #include "mainwindow.h"
 
-removeWord::removeWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+removeWord::removeWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::removeWord),
     mainWindow(parentWindow),

@@ -2,7 +2,7 @@
 #include "ui_searchwindow.h"
 #include "mainwindow.h"
 
-searchWindow::searchWindow(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+searchWindow::searchWindow(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::searchWindow),
     mainWindow(parentWindow),

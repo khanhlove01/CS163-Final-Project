@@ -2,7 +2,7 @@
 #include "ui_addwordwindow.h"
 #include "mainwindow.h"
 
-addWordWindow::addWordWindow(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+addWordWindow::addWordWindow(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::addWordWindow),
     mainWindow(parentWindow),

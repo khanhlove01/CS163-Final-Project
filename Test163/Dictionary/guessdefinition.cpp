@@ -2,7 +2,7 @@
 #include "ui_guessdefinition.h"
 #include "mainwindow.h"
 
-guessDefinition::guessDefinition(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+guessDefinition::guessDefinition(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::guessDefinition),
     mainWindow(parentWindow),

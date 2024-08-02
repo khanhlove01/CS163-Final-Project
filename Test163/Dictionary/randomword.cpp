@@ -2,7 +2,7 @@
 #include "ui_randomword.h"
 #include "mainwindow.h"
 
-randomWord::randomWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+randomWord::randomWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::randomWord),
     mainWindow(parentWindow),

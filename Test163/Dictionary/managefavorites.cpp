@@ -2,7 +2,7 @@
 #include "ui_managefavorites.h"
 #include "mainwindow.h"
 
-manageFavorites::manageFavorites(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+manageFavorites::manageFavorites(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::manageFavorites),
     mainWindow(parentWindow),

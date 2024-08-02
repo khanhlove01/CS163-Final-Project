@@ -17,7 +17,7 @@ class viewFavorites : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit viewFavorites(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit viewFavorites(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~viewFavorites();
 
 private slots:
@@ -26,7 +26,7 @@ private slots:
 private:
     Ui::viewFavorites *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // VIEWFAVORITES_H

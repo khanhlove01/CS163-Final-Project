@@ -17,7 +17,7 @@ class addWordWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit addWordWindow(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit addWordWindow(MainWindow *parentWindow, Dictionary* & dict, QWidget *parent = nullptr);
     ~addWordWindow();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::addWordWindow *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // ADDWORDWINDOW_H

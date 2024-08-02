@@ -18,7 +18,7 @@ class randomWord : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit randomWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit randomWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~randomWord();
 
 private slots:
@@ -29,7 +29,7 @@ private slots:
 private:
     Ui::randomWord *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // RANDOMWORD_H

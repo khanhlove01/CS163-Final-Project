@@ -17,7 +17,7 @@ class removeWord : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit removeWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit removeWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~removeWord();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::removeWord *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
 };
 
 #endif // REMOVEWORD_H

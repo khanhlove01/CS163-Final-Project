@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     std::string currentDataset = "slang";
-    auto dict = std::make_shared<Dictionary>("slang.txt", "slang_history.txt", "slang_favourites.txt");
+    auto dict = new Dictionary("slang.txt", "slang_history.txt", "slang_favourites.txt");
     dict->loadDataSet();
     QApplication a(argc, argv);
     MainWindow w(dict, currentDataset);

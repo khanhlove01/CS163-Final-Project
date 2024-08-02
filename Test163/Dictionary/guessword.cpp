@@ -2,7 +2,7 @@
 #include "ui_guessword.h"
 #include "mainwindow.h"
 
-guessWord::guessWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+guessWord::guessWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::guessWord),
     mainWindow(parentWindow),

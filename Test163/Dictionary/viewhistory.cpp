@@ -2,7 +2,7 @@
 #include "ui_viewhistory.h"
 #include "mainwindow.h"
 
-viewHIstory::viewHIstory(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent)
+viewHIstory::viewHIstory(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::viewHIstory),
     mainWindow(parentWindow),

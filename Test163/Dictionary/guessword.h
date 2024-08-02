@@ -18,7 +18,7 @@ class guessWord : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit guessWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict, QWidget *parent = nullptr);
+    explicit guessWord(MainWindow *parentWindow, Dictionary* &dict, QWidget *parent = nullptr);
     ~guessWord();
 
 private slots:
@@ -39,7 +39,7 @@ private slots:
 private:
     Ui::guessWord *ui;
     MainWindow *mainWindow;
-    std::shared_ptr<Dictionary> dict;
+    Dictionary* dict;
     int correctIndex;
     vector<string> definitions;
 };
