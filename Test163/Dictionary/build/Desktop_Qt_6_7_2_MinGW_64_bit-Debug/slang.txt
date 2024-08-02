@@ -501,7 +501,6 @@ ASCII`American Standard Code for Information Interchange
 ASD`Sequence of letters on many keyboards
 ASDFGHJKL`Excitement| Frustration| Boredom
 ASDFGHJKL;`I'm bored
-ASDFGHJKL;'`When A Feeling Cannot Be Expressed In Words| Home Keys On Standard Keyboard
 ASF`And So Forth
 ASG`Asgarv| LOL
 ASIC`Application Specific Integrated Circuit

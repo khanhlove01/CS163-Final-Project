@@ -103,9 +103,8 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
     }
     else if (index.row() == 6)
     {
-        if (!RemoveWord) {
-            RemoveWord = new removeWord(this, dictionary);
-        }
+        if (RemoveWord) delete RemoveWord;
+        RemoveWord = new removeWord(this, dictionary);
         RemoveWord->show();
         this->hide();
     }
@@ -116,57 +115,36 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
     }
     else if (index.row() == 8)
     {
-        if (!RandomWord) {
-            RandomWord = new randomWord(this, dictionary);
-        }
-        else {
-            delete RandomWord;
-            RandomWord = new randomWord(this, dictionary);
-        }
+        if (RandomWord) delete RandomWord;
+        RandomWord = new randomWord(this, dictionary);
         RandomWord->show();
         this->hide();
     }
     else if (index.row() == 9)
     {
-        if (!ViewFavorites) {
-            ViewFavorites = new viewFavorites(this, dictionary);
-        }
-        else {
-            delete ViewFavorites;
-            ViewFavorites = new viewFavorites(this, dictionary);
-        }
+        if (ViewFavorites) delete ViewFavorites;
+        ViewFavorites = new viewFavorites(this, dictionary);
         ViewFavorites->show();
         this->hide();
     }
     else if (index.row() == 10)
     {
-        if (!ManageFavorites) {
-            ManageFavorites = new manageFavorites(this, dictionary);
-        }
+        if (ManageFavorites) delete ManageFavorites;
+        ManageFavorites = new manageFavorites(this, dictionary);
         ManageFavorites->show();
         this->hide();
     }
     else if (index.row() == 11)
     {
-        if (!GuessDefinition) {
-            GuessDefinition = new guessDefinition(this, dictionary);
-        }
-        else {
-            delete GuessDefinition;
-            GuessDefinition = new guessDefinition(this, dictionary);
-        }
+        if (GuessDefinition) delete GuessDefinition;
+        GuessDefinition = new guessDefinition(this, dictionary);
         GuessDefinition->show();
         this->hide();
     }
     else if (index.row() == 12)
     {
-        if (!GuessWord) {
-            GuessWord = new guessWord(this, dictionary);
-        }
-        else {
-            delete GuessWord;
-            GuessWord = new guessWord(this, dictionary);
-        }
+        if (!GuessWord) delete GuessWord;
+        GuessWord = new guessWord(this, dictionary);
         GuessWord->show();
         this->hide();
     }

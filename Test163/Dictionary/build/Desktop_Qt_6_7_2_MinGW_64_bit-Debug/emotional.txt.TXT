@@ -80,7 +80,6 @@
 :v)	User has a broken nose, but it's the other way.
 :{	What?
 :}	What should we call these? (what?)
-;-)	Winky smiley. User just made a flirtatious and/or sarcastic remark.More of a "don't hit me for what I just said" smiley.
 <:-I	User is a dunce.
 <|-(	User is Chinese and doesn't like these kind of jokes.
 <|-)	User is Chinese.
@@ -179,7 +178,6 @@ BYOB	Bring your own bottle
 BYOH	Bat You Onna Head
 C&G	Chuckle and grin
 C=:-)	User is a chef.
-C=}>;*{))	A drunk, devilish chef with a toupee in an updraft, a mustache, and a double chin.
 CAD	Ctrl-alt-delete
 CADET	Can't add, doesn't even try
 CDIWY	Couldn't do it without you
@@ -195,7 +193,7 @@ CMIIW	Correct me if I'm wrong
 CNP	Continue in next post
 CO	Conference
 CRAFT	Can't remember a frighten thing
-CRS	Can’t remember shit
+CRS	Can't remember shit
 CSG	Chuckle snicker grin
 CTS	Changing the subject
 CU	See you
@@ -341,11 +339,11 @@ HHOJ	Ha ha, only joking
 HHOK	Ha ha, only kidding
 HHOS	Ha ha, only seriously
 HIH	Hope it helps
-HILIACACLO	Help I lapsed into a coma and can’t log off
+HILIACACLO	Help I lapsed into a coma and can't log off
 HIWTH	Hate it when that happens
 HLM	He loves me
 HMS	Home made smiley
-HMT	Here’s my try
+HMT	Here's my try
 HMWK	Homework
 HOAS	Hold on a second
 HSIK	How should i know
@@ -376,10 +374,10 @@ IGTP	I get the point
 IHTFP	I hate this fountain place
 IHU	I hate you
 IHY	I hate you
-II	I’m impressed
+II	I'm impressed
 IIR	If I recall
 IIRC	If I recall correctly
-IIT	I’m impressed too
+IIT	I'm impressed too
 IJWTK	I just want to know
 IJWTS	I just want to say
 IK	I know
@@ -405,7 +403,6 @@ INAL	I'm not a lawyer
 INPO	In no particular order
 IOIT	I'm on Irish Time
 IOW	In other words
-IRC	Internet Relay Chat; an multiuser, multinetwork conversing platform (http://www.irc.org)
 IRL	In real life
 IRMFI	I reply merely for information
 IS	I'm sorry
