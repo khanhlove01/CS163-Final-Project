@@ -130,6 +130,14 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
         ManageFavorites->show();
         this->hide();
     }
+    else if (index.row() == 11)
+    {
+        if (!GuessDefinition) {
+            GuessDefinition = new guessDefinition(this, dictionary);
+        }
+        GuessDefinition->show();
+        this->hide();
+    }
 }
 
 void MainWindow::on_pushButton_clicked()
