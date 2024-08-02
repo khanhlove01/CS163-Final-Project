@@ -32,6 +32,10 @@ private slots:
 
     void on_answer3_clicked();
 
+    void generateNewDefinition();
+
+    void on_tryAnotherButton_clicked();
+
 private:
     Ui::guessWord *ui;
     MainWindow *mainWindow;

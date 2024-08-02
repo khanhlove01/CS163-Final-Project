@@ -12,24 +12,9 @@ guessWord::guessWord(MainWindow *parentWindow, std::shared_ptr<Dictionary> dict,
 
     this->setStyleSheet("background-color: #ebebd3;");
 
-    auto result = dict->getRandomDefinitionWithKeywords();
-    string word = get<0>(result);
-    this->definitions = get<1>(result);
-    this->correctIndex = get<2>(result);
+    generateNewDefinition();
 
-    this->ui->wordLabel->setText(QString::fromStdString("Guess the word for this definition: " + word));
-
-    this->ui->answer1->setText(QString::fromStdString(definitions[0]));
-    this->ui->answer1->setProperty("index", 0);
-
-    this->ui->answer2->setText(QString::fromStdString(definitions[1]));
-    this->ui->answer2->setProperty("index", 1);
-
-    this->ui->answer3->setText(QString::fromStdString(definitions[2]));
-    this->ui->answer3->setProperty("index", 2);
-
-    this->ui->answer4->setText(QString::fromStdString(definitions[3]));
-    this->ui->answer4->setProperty("index", 3);
+    connect(ui->tryAnotherButton, &QPushButton::clicked, this, &guessWord::on_tryAnotherButton_clicked);
 }
 
 guessWord::~guessWord()
@@ -72,5 +57,35 @@ void guessWord::on_answer4_clicked()
     if (this->ui->answer4->property("index").toInt() == this->correctIndex)
         this->ui->resultLabel->setText("Correct");
     else this->ui->resultLabel->setText(QString::fromStdString("Incorrect. The correct word is: " + this->definitions[this->correctIndex]));
+}
+
+void guessWord::generateNewDefinition()
+{
+    auto result = dict->getRandomDefinitionWithKeywords();
+    string word = std::get<0>(result);
+    this->definitions = std::get<1>(result);
+    this->correctIndex = std::get<2>(result);
+
+    this->ui->wordLabel->setText(QString::fromStdString("Guess the word for this definition: " + word));
+
+    this->ui->answer1->setText(QString::fromStdString(definitions[0]));
+    this->ui->answer1->setProperty("index", 0);
+
+    this->ui->answer2->setText(QString::fromStdString(definitions[1]));
+    this->ui->answer2->setProperty("index", 1);
+
+    this->ui->answer3->setText(QString::fromStdString(definitions[2]));
+    this->ui->answer3->setProperty("index", 2);
+
+    this->ui->answer4->setText(QString::fromStdString(definitions[3]));
+    this->ui->answer4->setProperty("index", 3);
+
+    // Clear the result label
+    this->ui->resultLabel->setText("");
+}
+
+void guessWord::on_tryAnotherButton_clicked()
+{
+    generateNewDefinition();
 }
 
