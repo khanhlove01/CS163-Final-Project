@@ -12,6 +12,9 @@ viewFavorites::viewFavorites(MainWindow *parentWindow, std::shared_ptr<Dictionar
 
     this->setStyleSheet("background-color: #ebebd3;");
 
+    vector<string> res = this->dict->viewFavourites();
+    displayVectorInListWidget(this->ui->favorites, res);
+
 }
 
 viewFavorites::~viewFavorites()
