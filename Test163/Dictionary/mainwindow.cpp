@@ -110,7 +110,13 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
     }
     else if (index.row() == 7)
     {
-        this->dictionary->resetToOriginal(currentDataset == "slang" ? "originalslang.txt" : "originalemotional.txt.TXT");
+        if (this->currentDataset == "slang") {
+            this->dictionary->resetToOriginal("originalslang.txt");
+        } else if (this->currentDataset == "emotional") {
+            this->dictionary->resetToOriginal("originalemotional.txt.TXT");
+        } else if (this->currentDataset == "english") {
+            this->dictionary->resetToOriginal("english.txt");
+        }
         this->ui->resetButton->setVisible(true);
     }
     else if (index.row() == 8)

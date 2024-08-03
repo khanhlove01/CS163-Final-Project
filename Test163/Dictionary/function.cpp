@@ -41,6 +41,9 @@ void Dictionary::appendToFile(const string& word, const string& definition) {
     else if (dataSetPath == "emotional.txt.TXT") {
         outfile << word << "\t" << definition << endl;
     }
+    else if (dataSetPath == "english.txt") {
+        outfile << word << "," << definition << endl;
+    }
     outfile.close();
 }
 
@@ -92,6 +95,9 @@ void Dictionary::updateFile(const string& word, const string& newDefinition) {
         else if (dataSetPath == "emotional.txt.TXT") {
             getline(iss, existingWord, '\t');
         }
+        else if (dataSetPath == "english.txt") {
+            getline(iss, existingWord, ',');
+        }
         getline(iss, existingDefinition);
 
         if (existingWord == word) {
@@ -103,6 +109,9 @@ void Dictionary::updateFile(const string& word, const string& newDefinition) {
         }
         else if (dataSetPath == "emotional.txt.TXT") {
             outfile << existingWord << "\t" << existingDefinition << endl;
+        }
+        else if (dataSetPath == "english.txt") {
+            outfile << existingWord << "," << existingDefinition << endl;
         }
     }
 
@@ -126,6 +135,9 @@ void Dictionary::removeFromFile(const string& word) {
         else if (dataSetPath == "emotional.txt.TXT") {
             getline(iss, existingWord, '\t');
         }
+        else if (dataSetPath == "english.txt") {
+            getline(iss, existingWord, ',');
+        }
         getline(iss, existingDefinition);
 
         if (existingWord != word) {
@@ -134,6 +146,9 @@ void Dictionary::removeFromFile(const string& word) {
             }
             else if (dataSetPath == "emotional.txt.TXT") {
                 outfile << existingWord << "\t" << existingDefinition << endl;
+            }
+            else if (dataSetPath == "english.txt") {
+                outfile << existingWord << "," << existingDefinition << endl;
             }
         }
     }
@@ -231,6 +246,9 @@ void Dictionary::loadDataSet() {
         }
         else if (dataSetPath == "emotional.txt.TXT") {
             getline(iss, word, '\t');
+        }
+        else if (dataSetPath == "english.txt") {
+            getline(iss, word, ',');
         }
         getline(iss, definition);
         insert(root, word, definition, 0);

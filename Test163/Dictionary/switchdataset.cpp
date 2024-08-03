@@ -28,6 +28,11 @@ void SwitchDataset::on_backButton_clicked()
 
 void SwitchDataset::on_englishButton_clicked()
 {
+    delete dictionary;
+    dictionary = new Dictionary("english.txt", "english_history.txt", "english_favourites.txt");
+    dictionary->loadDataSet();
+    mainWindow->setDictionary(dictionary);
+    mainWindow->setCurrentDataset("english");
     this->ui->datasetName->setText("English dataset");
     this->ui->successful->setVisible(true);
     this->ui->datasetName->setVisible(true);
