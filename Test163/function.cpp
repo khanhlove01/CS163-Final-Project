@@ -29,7 +29,7 @@ void Dictionary::insert(TrieNode* node, const string& word, const string& defini
     }
 
     char c = word[index];
-    if (!node->children[c]) {
+    if (!node->children.contains(c)) {
         node->children[c] = new TrieNode();
     }
     insert(node->children[c], word, definition, index + 1);
@@ -41,7 +41,7 @@ TrieNode* Dictionary::search(TrieNode* node, const string& word, int index) {
     }
 
     char c = word[index];
-    if (!node->children[c]) {
+    if (!node->children.contains(c)) {
         return nullptr;
     }
     return search(node->children[c], word, index + 1);
@@ -107,7 +107,6 @@ void Dictionary::loadFavouritesFromFile() {
 }
 
 void Dictionary::searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
-    //cout << results.size() << endl << endl;
     if (node != nullptr && node->definition.find(definition) != string::npos) {
         if (node->isEndOfWord) {
             results.push_back(currentWord);
@@ -177,7 +176,6 @@ void Dictionary::removeFromFile(const string& word) {
     ifstream infile(dataSetPath);
     ofstream outfile("temp.txt");
     string line;
-    //cout << dataSetPath << endl;
     while (getline(infile, line)) {
         istringstream iss(line);
         string existingWord, existingDefinition;
@@ -224,9 +222,9 @@ string Dictionary::getDatasetPath()
 }
 
 void Dictionary::resetToOriginal(const string& originalFilePath) {
-    resetTrie();  // Reset the Trie
-    writeDataSetToFile(originalFilePath);  // Write original data to current dataset file
-    loadDataSet();  // Load the data from the current dataset file into the Trie
+    resetTrie();
+    writeDataSetToFile(originalFilePath);
+    loadDataSet();
 }
 
 pair<string, string> Dictionary::getRandomWord() const {
@@ -401,6 +399,7 @@ void Dictionary::removeWordFromDictionary(const string& word) {
         }
     }
 }
+
 bool Dictionary::wordExists(const string& word) {
     TrieNode* node = search(root, word, 0);
     return node && node->isEndOfWord;

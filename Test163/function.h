@@ -1,9 +1,9 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
+#include "custom_map.h"  // Include the custom unordered map
 #include <iostream>
 #include <fstream>
-#include <unordered_map>
 #include <vector>
 #include <string>
 #include <tuple>
@@ -11,7 +11,7 @@
 using namespace std;
 
 struct TrieNode {
-    unordered_map<char, TrieNode*> children;
+    CustomUnorderedMap<char, TrieNode*> children;  // Use custom unordered map
     bool isEndOfWord;
     string definition;
 
@@ -26,7 +26,7 @@ private:
     string dataSetPath;
     string historyFilePath;
     string favouriteFilePath;
-    vector<pair<string, string>> words; // Vector to store words and their definitions
+    vector<pair<string, string>> words;
 
     void insert(TrieNode* node, const string& word, const string& definition, int index);
     TrieNode* search(TrieNode* node, const string& word, int index);
@@ -42,9 +42,6 @@ private:
     bool Isremoved(TrieNode*& node, const string& word, int index);
     void removeFromFile(const string& word);
     void writeDataSetToFile(const string& originalFilePath);
-
-
-    
 
 public:
     Dictionary(const string& path, const string& historyPath, const string& favouritePath);
@@ -65,7 +62,7 @@ public:
     pair<string, string> getRandomWord() const;
     tuple<string, vector<string>, int> getRandomWordWithDefinitions() const;
     tuple<string, vector<string>, int> getRandomDefinitionWithKeywords() const;
-    bool wordExists(const string& word) ;
+    bool wordExists(const string& word);
 
     string getDatasetPath();
 };

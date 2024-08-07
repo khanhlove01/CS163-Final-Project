@@ -26,5 +26,8 @@
     <ClInclude Include="function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="custom_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
