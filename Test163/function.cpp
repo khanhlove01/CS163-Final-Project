@@ -107,12 +107,16 @@ void Dictionary::loadFavouritesFromFile() {
 }
 
 void Dictionary::searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
-    if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
-        results.push_back(currentWord);
+    //cout << results.size() << endl << endl;
+    if (node != nullptr && node->definition.find(definition) != string::npos) {
+        if (node->isEndOfWord) {
+            results.push_back(currentWord);
+        }
     }
-
-    for (auto& child : node->children) {
-        searchByDefinition(child.second, definition, currentWord + child.first, results);
+    if (node != nullptr) {
+        for (auto& child : node->children) {
+            searchByDefinition(child.second, definition, currentWord + child.first, results);
+        }
     }
 }
 
