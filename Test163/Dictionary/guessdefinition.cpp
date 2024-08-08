@@ -86,7 +86,6 @@ void guessDefinition::generateNewWord()
     this->ui->answer4->setText(QString::fromStdString(definitions[3]));
     this->ui->answer4->setProperty("index", 3);
 
-    // Clear the result label
     this->ui->resultLabel->setText("");
 }
 

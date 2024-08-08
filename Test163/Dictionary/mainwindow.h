@@ -28,10 +28,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(Dictionary *&dict, std::string &dataset, QWidget *parent = nullptr); // Add reference to currentDataset
+    MainWindow(Dictionary *&dict, std::string &dataset, QWidget *parent = nullptr);
     ~MainWindow();
 
-    void setCurrentDataset(const std::string &dataset); // Setter for currentDataset
+    void setCurrentDataset(const std::string &dataset);
     void setDictionary(Dictionary* dict);
 
 private slots:
@@ -56,7 +56,7 @@ private:
     guessWord *GuessWord;
 
     Dictionary* dictionary;
-    string &currentDataset; // Reference to currentDataset
+    string &currentDataset;
 };
 
 #endif // MAINWINDOW_H

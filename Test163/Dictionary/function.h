@@ -1,15 +1,13 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-#include <unordered_map>
 #include <string>
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include <unordered_set>
-
 #include <iostream>
-
+#include <unordered_set>
+#include "custom_map.h"
 
 #include <QListWidget>
 #include <QString>
@@ -18,7 +16,7 @@ using namespace std;
 void displayVectorInListWidget(QListWidget* listWidget, const vector<string>& vec);
 
 struct TrieNode {
-    unordered_map<char, TrieNode*> children;
+    CustomUnorderedMap<char, TrieNode*> children;
     bool isEndOfWord;
     string definition;
 
@@ -33,7 +31,7 @@ private:
     string dataSetPath;
     string historyFilePath;
     string favouriteFilePath;
-    vector<pair<string, string>> words; // Vector to store words and their definitions
+    vector<pair<string, string>> words;
 
     TrieNode* search(TrieNode* node, const string& word, int index);
     void insert(TrieNode* node, const string& word, const string& definition, int index);

@@ -17,13 +17,12 @@ SwitchDataset::~SwitchDataset()
 
 void SwitchDataset::on_backButton_clicked()
 {
-    // Show the main window and close the current window
     if (mainWindow) {
         mainWindow->show();
     }
     this->ui->successful->setVisible(false);
     this->ui->datasetName->setVisible(false);
-    this->close();  // Close the SwitchDataset window
+    this->close();
 }
 
 void SwitchDataset::on_englishButton_clicked()

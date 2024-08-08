@@ -11,7 +11,7 @@ class SwitchDataset;
 }
 QT_END_NAMESPACE
 
-class MainWindow;  // Forward declaration
+class MainWindow;
 
 class SwitchDataset : public QMainWindow
 {
@@ -29,8 +29,8 @@ private slots:
 
 private:
     Ui::SwitchDataset *ui;
-    MainWindow *mainWindow;  // Pointer to the main window
-    Dictionary* dictionary;  // Pointer to the Dictionary object
+    MainWindow *mainWindow;
+    Dictionary* dictionary;
 };
 
 #endif // SWITCHDATASET_H

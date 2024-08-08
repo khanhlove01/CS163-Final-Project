@@ -27,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     addwordwindow.h \
+    custom_map.h \
     editword.h \
     function.h \
     guessdefinition.h \

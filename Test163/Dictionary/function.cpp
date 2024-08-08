@@ -13,7 +13,7 @@ TrieNode* Dictionary::search(TrieNode* node, const string& word, int index) {
     }
 
     char c = word[index];
-    if (!node->children[c]) {
+    if (!node->children.contains(c)) {
         return nullptr;
     }
     return search(node->children[c], word, index + 1);
@@ -27,7 +27,7 @@ void Dictionary::insert(TrieNode* node, const string& word, const string& defini
     }
 
     char c = word[index];
-    if (!node->children[c]) {
+    if (!node->children.contains(c)) {
         node->children[c] = new TrieNode();
     }
     insert(node->children[c], word, definition, index + 1);
@@ -125,7 +125,6 @@ void Dictionary::removeFromFile(const string& word) {
     ifstream infile(dataSetPath);
     ofstream outfile("temp.txt");
     string line;
-    //cout << dataSetPath << endl;
     while (getline(infile, line)) {
         istringstream iss(line);
         string existingWord, existingDefinition;
@@ -169,12 +168,16 @@ void Dictionary::deleteNode(TrieNode*& node) {
 }
 
 void Dictionary::searchByDefinition(TrieNode* node, const string& definition, string currentWord, vector<string>& results) {
-    if (node->isEndOfWord && node->definition.find(definition) != string::npos) {
-        results.push_back(currentWord);
+    if (node != nullptr && node->definition.find(definition) != string::npos) {
+        if (node->isEndOfWord) {
+            results.push_back(currentWord);
+        }
     }
 
-    for (auto& child : node->children) {
-        searchByDefinition(child.second, definition, currentWord + child.first, results);
+    if (node != nullptr) {
+        for (auto& child : node->children) {
+            searchByDefinition(child.second, definition, currentWord + child.first, results);
+        }
     }
 }
 
@@ -265,7 +268,6 @@ bool Dictionary::wordExists(const string& word) {
 string Dictionary::search(const string& word) {
 
     history.push_back(word);
-    // return word;
     saveHistoryToFile();
     TrieNode* node = search(root, word, 0);
     if (node && node->isEndOfWord) {
@@ -307,9 +309,9 @@ void Dictionary::removeWordFromDictionary(const string& word) {
 }
 
 void Dictionary::resetToOriginal(const string& originalFilePath) {
-    resetTrie();  // Reset the Trie
-    writeDataSetToFile(originalFilePath);  // Write original data to current dataset file
-    loadDataSet();  // Load the data from the current dataset file into the Trie
+    resetTrie();
+    writeDataSetToFile(originalFilePath);
+    loadDataSet();
 }
 
 pair<string, string> Dictionary::getRandomWord() const {
