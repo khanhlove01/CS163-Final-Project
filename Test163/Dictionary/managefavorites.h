@@ -25,6 +25,10 @@ private slots:
 
     void on_wordEdit_editingFinished();
 
+    void on_yesButton_clicked();
+
+    void on_noButton_clicked();
+
 private:
     Ui::manageFavorites *ui;
     MainWindow *mainWindow;
