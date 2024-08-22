@@ -24,7 +24,7 @@
    </property>
    <property name="font">
     <font>
-     <family>VNI-Disney</family>
+     <family>Times New Roman</family>
      <pointsize>30</pointsize>
      <bold>true</bold>
     </font>
@@ -48,6 +48,11 @@
      <height>341</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -66,7 +71,7 @@
    </property>
    <property name="font">
     <font>
-     <family>VNI-Disney</family>
+     <family>Times New Roman</family>
      <pointsize>21</pointsize>
      <bold>true</bold>
     </font>
@@ -81,81 +86,23 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>180</y>
-     <width>161</width>
-     <height>191</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="englishButton">
-      <property name="font">
-       <font>
-        <family>VNI-Disney</family>
-        <pointsize>21</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #f4d35e; color: white;</string>
-      </property>
-      <property name="text">
-       <string>English</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="slangButton">
-      <property name="font">
-       <font>
-        <family>VNI-Disney</family>
-        <pointsize>21</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #f4d35e; color: white;</string>
-      </property>
-      <property name="text">
-       <string>Slang</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="emoteButton">
-      <property name="font">
-       <font>
-        <family>VNI-Disney</family>
-        <pointsize>21</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #f4d35e; color: white;</string>
-      </property>
-      <property name="text">
-       <string>Emotional</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
      <x>30</x>
      <y>390</y>
-     <width>399</width>
+     <width>454</width>
      <height>106</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+    </font>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QLabel" name="successful">
       <property name="font">
        <font>
-        <family>VNI-Disney</family>
+        <family>Times New Roman</family>
         <pointsize>30</pointsize>
         <bold>true</bold>
        </font>
@@ -175,7 +122,7 @@
      <widget class="QLabel" name="datasetName">
       <property name="font">
        <font>
-        <family>VNI-Disney</family>
+        <family>Times New Roman</family>
         <pointsize>30</pointsize>
         <bold>true</bold>
        </font>
@@ -188,6 +135,91 @@
       </property>
       <property name="wordWrap">
        <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>140</y>
+     <width>171</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+    </font>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="englishButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>21</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f4d35e; color: white;</string>
+      </property>
+      <property name="text">
+       <string>Eng-Eng</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="eng2vietButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>21</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f4d35e; color: white;</string>
+      </property>
+      <property name="text">
+       <string>Eng-Viet</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="slangButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>21</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f4d35e; color: white;</string>
+      </property>
+      <property name="text">
+       <string>Slang</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="emoteButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>21</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f4d35e; color: white;</string>
+      </property>
+      <property name="text">
+       <string>Emotional</string>
       </property>
      </widget>
     </item>

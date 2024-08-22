@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QString>
 #include "function.h"
-#include <memory>
 
 namespace Ui {
 class searchWindow;

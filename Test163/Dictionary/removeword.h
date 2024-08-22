@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QListWidget>
 #include "function.h"
-#include <memory>
 
 namespace Ui {
 class removeWord;

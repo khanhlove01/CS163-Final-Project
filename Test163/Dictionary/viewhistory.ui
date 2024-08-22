@@ -23,6 +23,11 @@
       <height>341</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -41,7 +46,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>30</pointsize>
       <bold>true</bold>
      </font>
@@ -67,7 +72,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>
@@ -90,7 +95,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>14</pointsize>
      </font>
     </property>

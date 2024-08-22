@@ -17,8 +17,6 @@
 #include "guessdefinition.h"
 #include "guessword.h"
 
-#include <memory>
-
 namespace Ui {
 class MainWindow;
 }

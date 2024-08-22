@@ -37,7 +37,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>30</pointsize>
       <bold>true</bold>
      </font>
@@ -61,6 +61,11 @@
       <height>341</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -79,7 +84,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>
@@ -96,16 +101,21 @@
      <rect>
       <x>100</x>
       <y>100</y>
-      <width>301</width>
+      <width>321</width>
       <height>391</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>18</pointsize>
          <bold>true</bold>
         </font>
@@ -125,7 +135,7 @@
       <widget class="QListWidget" name="listWidget">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>14</pointsize>
         </font>
        </property>
@@ -215,7 +225,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>

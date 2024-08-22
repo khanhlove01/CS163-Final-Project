@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include "function.h"
-#include <memory>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -26,6 +25,8 @@ private slots:
     void on_englishButton_clicked();
     void on_slangButton_clicked();
     void on_emoteButton_clicked();
+
+    void on_eng2vietButton_clicked();
 
 private:
     Ui::SwitchDataset *ui;

@@ -28,7 +28,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>30</pointsize>
       <bold>true</bold>
      </font>
@@ -54,7 +54,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>
@@ -75,6 +75,11 @@
       <height>341</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -91,12 +96,17 @@
       <height>201</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>18</pointsize>
          <bold>true</bold>
         </font>
@@ -116,7 +126,7 @@
       <widget class="QLabel" name="wordLabel">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>18</pointsize>
          <bold>false</bold>
         </font>
@@ -136,7 +146,7 @@
       <widget class="QLabel" name="label_5">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>18</pointsize>
          <bold>true</bold>
         </font>
@@ -156,7 +166,7 @@
       <widget class="QLabel" name="definitionLabel">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>18</pointsize>
          <bold>false</bold>
         </font>
@@ -185,7 +195,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>

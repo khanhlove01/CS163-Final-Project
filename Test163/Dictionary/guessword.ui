@@ -25,7 +25,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>30</pointsize>
       <bold>true</bold>
      </font>
@@ -51,7 +51,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>
@@ -72,6 +72,11 @@
       <height>168</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="bottomMargin">
       <number>0</number>
@@ -80,9 +85,9 @@
       <widget class="QPushButton" name="answer1">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
-         <pointsize>18</pointsize>
-         <bold>false</bold>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -97,9 +102,9 @@
       <widget class="QPushButton" name="answer2">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
-         <pointsize>18</pointsize>
-         <bold>false</bold>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -114,9 +119,9 @@
       <widget class="QPushButton" name="answer3">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
-         <pointsize>18</pointsize>
-         <bold>false</bold>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -131,9 +136,9 @@
       <widget class="QPushButton" name="answer4">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
-         <pointsize>18</pointsize>
-         <bold>false</bold>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -157,7 +162,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>18</pointsize>
       <bold>true</bold>
      </font>
@@ -183,7 +188,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>18</pointsize>
       <bold>true</bold>
      </font>
@@ -201,15 +206,15 @@
    <widget class="QPushButton" name="tryAnotherButton">
     <property name="geometry">
      <rect>
-      <x>265</x>
+      <x>240</x>
       <y>480</y>
-      <width>270</width>
+      <width>331</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>

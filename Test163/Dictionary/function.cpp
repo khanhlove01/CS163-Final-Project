@@ -44,6 +44,9 @@ void Dictionary::appendToFile(const string& word, const string& definition) {
     else if (dataSetPath == "english.txt") {
         outfile << word << "," << definition << endl;
     }
+    else if (dataSetPath == "eng2viet.txt") {
+        outfile << word << "," << definition << endl;
+    }
     outfile.close();
 }
 
@@ -98,6 +101,9 @@ void Dictionary::updateFile(const string& word, const string& newDefinition) {
         else if (dataSetPath == "english.txt") {
             getline(iss, existingWord, ',');
         }
+        else if (dataSetPath == "eng2viet.txt") {
+            getline(iss, existingWord, ',');
+        }
         getline(iss, existingDefinition);
 
         if (existingWord == word) {
@@ -111,6 +117,9 @@ void Dictionary::updateFile(const string& word, const string& newDefinition) {
             outfile << existingWord << "\t" << existingDefinition << endl;
         }
         else if (dataSetPath == "english.txt") {
+            outfile << existingWord << "," << existingDefinition << endl;
+        }
+        else if (dataSetPath == "eng2viet.txt") {
             outfile << existingWord << "," << existingDefinition << endl;
         }
     }
@@ -137,6 +146,9 @@ void Dictionary::removeFromFile(const string& word) {
         else if (dataSetPath == "english.txt") {
             getline(iss, existingWord, ',');
         }
+        else if (dataSetPath == "eng2viet.txt") {
+            getline(iss, existingWord, ',');
+        }
         getline(iss, existingDefinition);
 
         if (existingWord != word) {
@@ -147,6 +159,9 @@ void Dictionary::removeFromFile(const string& word) {
                 outfile << existingWord << "\t" << existingDefinition << endl;
             }
             else if (dataSetPath == "english.txt") {
+                outfile << existingWord << "," << existingDefinition << endl;
+            }
+            else if (dataSetPath == "eng2viet.txt") {
                 outfile << existingWord << "," << existingDefinition << endl;
             }
         }
@@ -251,6 +266,9 @@ void Dictionary::loadDataSet() {
             getline(iss, word, '\t');
         }
         else if (dataSetPath == "english.txt") {
+            getline(iss, word, ',');
+        }
+        else if (dataSetPath == "eng2viet.txt") {
             getline(iss, word, ',');
         }
         getline(iss, definition);

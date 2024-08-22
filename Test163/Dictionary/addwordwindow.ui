@@ -25,7 +25,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>30</pointsize>
       <bold>true</bold>
      </font>
@@ -67,7 +67,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>
@@ -90,7 +90,7 @@
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>21</pointsize>
       <bold>true</bold>
      </font>
@@ -105,15 +105,15 @@
    <widget class="QLabel" name="resultLabel">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>40</x>
       <y>370</y>
-      <width>321</width>
+      <width>381</width>
       <height>49</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>VNI-Disney</family>
+      <family>Times New Roman</family>
       <pointsize>14</pointsize>
       <bold>true</bold>
      </font>
@@ -142,7 +142,7 @@
       <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>14</pointsize>
          <bold>true</bold>
         </font>
@@ -159,13 +159,19 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="wordEdit"/>
+      <widget class="QLineEdit" name="wordEdit">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_4">
        <property name="font">
         <font>
-         <family>VNI-Disney</family>
+         <family>Times New Roman</family>
          <pointsize>14</pointsize>
          <bold>true</bold>
         </font>
@@ -182,7 +188,13 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="definitionEdit"/>
+      <widget class="QLineEdit" name="definitionEdit">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+        </font>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

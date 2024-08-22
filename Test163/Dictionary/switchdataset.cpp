@@ -32,7 +32,7 @@ void SwitchDataset::on_englishButton_clicked()
     dictionary->loadDataSet();
     mainWindow->setDictionary(dictionary);
     mainWindow->setCurrentDataset("english");
-    this->ui->datasetName->setText("English dataset");
+    this->ui->datasetName->setText("Eng-Eng dataset");
     this->ui->successful->setVisible(true);
     this->ui->datasetName->setVisible(true);
 }
@@ -59,6 +59,19 @@ void SwitchDataset::on_emoteButton_clicked()
     mainWindow->setDictionary(dictionary);
     mainWindow->setCurrentDataset("emotional");
     ui->datasetName->setText("Emotional dataset");
+    ui->successful->setVisible(true);
+    ui->datasetName->setVisible(true);
+}
+
+
+void SwitchDataset::on_eng2vietButton_clicked()
+{
+    delete dictionary;
+    dictionary = new Dictionary("eng2viet.txt", "eng2viet_history.txt", "eng2viet_favourites.txt");
+    dictionary->loadDataSet();
+    mainWindow->setDictionary(dictionary);
+    mainWindow->setCurrentDataset("eng2viet");
+    ui->datasetName->setText("Eng-Vie dataset");
     ui->successful->setVisible(true);
     ui->datasetName->setVisible(true);
 }
