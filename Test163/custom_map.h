@@ -21,7 +21,6 @@ public:
         buckets[index].emplace_back(key, Value());
         return buckets[index].back().second;
     }
-
     bool contains(const Key& key) const {
         size_t index = getBucketIndex(key);
         for (const auto& pair : buckets[index]) {
@@ -31,20 +30,17 @@ public:
         }
         return false;
     }
-
     void erase(const Key& key) {
         size_t index = getBucketIndex(key);
         buckets[index].remove_if([&key](const std::pair<Key, Value>& pair) {
             return pair.first == key;
             });
     }
-
     void clear() {
         for (auto& bucket : buckets) {
             bucket.clear();
         }
     }
-
     bool empty() const {
         for (const auto& bucket : buckets) {
             if (!bucket.empty()) {
@@ -53,7 +49,6 @@ public:
         }
         return true;
     }
-
     class Iterator {
     public:
         using BucketIterator = typename std::list<std::pair<Key, Value>>::iterator;
@@ -66,17 +61,14 @@ public:
                 advanceOuterIterator();
             }
         }
-
         std::pair<Key, Value>& operator*() {
             return *inner_it;
         }
-
         Iterator& operator++() {
             ++inner_it;
             advanceOuterIterator();
             return *this;
         }
-
         bool operator!=(const Iterator& other) const {
             return outer_it != other.outer_it || (outer_it != outer_end && inner_it != other.inner_it);
         }
@@ -84,7 +76,6 @@ public:
     private:
         OuterIterator outer_it, outer_end;
         BucketIterator inner_it;
-
         void advanceOuterIterator() {
             while (outer_it != outer_end && inner_it == outer_it->end()) {
                 ++outer_it;
@@ -109,10 +100,9 @@ public:
 
 private:
     std::vector<std::list<std::pair<Key, Value>>> buckets;
-
     size_t getBucketIndex(const Key& key) const {
         return std::hash<Key>()(key) % buckets.size();
     }
 };
 
-#endif // CUSTOM_MAP_H
+#endif
