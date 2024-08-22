@@ -1,7 +1,7 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-#include "custom_map.h"  // Include the custom unordered map
+#include "custom_map.h" 
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -11,7 +11,7 @@
 using namespace std;
 
 struct TrieNode {
-    CustomUnorderedMap<char, TrieNode*> children;  // Use custom unordered map
+    CustomUnorderedMap<char, TrieNode*> children;  
     bool isEndOfWord;
     string definition;
 
@@ -67,4 +67,4 @@ public:
     string getDatasetPath();
 };
 
-#endif // FUNCTION_H
+#endif
