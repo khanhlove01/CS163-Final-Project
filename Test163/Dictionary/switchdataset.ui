@@ -140,19 +140,14 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>150</x>
      <y>140</y>
      <width>171</width>
-     <height>221</height>
+     <height>231</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Times New Roman</family>
-    </font>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -186,6 +181,23 @@
       </property>
       <property name="text">
        <string>Eng-Viet</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="eng2spaButton">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>21</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #f4d35e; color: white;</string>
+      </property>
+      <property name="text">
+       <string>Eng-Span</string>
       </property>
      </widget>
     </item>

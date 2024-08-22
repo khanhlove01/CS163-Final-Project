@@ -28,6 +28,8 @@ private slots:
 
     void on_eng2vietButton_clicked();
 
+    void on_eng2spaButton_clicked();
+
 private:
     Ui::SwitchDataset *ui;
     MainWindow *mainWindow;

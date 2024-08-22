@@ -118,6 +118,8 @@ void MainWindow::on_listWidget_clicked(const QModelIndex &index)
             this->dictionary->resetToOriginal("originalenglish.txt");
         } else if (this->currentDataset == "eng2viet") {
             this->dictionary->resetToOriginal("originaleng2viet.txt");
+        } else if (this->currentDataset == "eng2spa") {
+            this->dictionary->resetToOriginal("originaleng2spa.txt");
         }
         this->ui->resetButton->setVisible(true);
     }
