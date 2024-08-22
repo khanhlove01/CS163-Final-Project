@@ -24,8 +24,6 @@ void displayMenu() {
     cout << "Enter your choice: ";
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 1. Choose Dataset
 void chooseDataSet(Dictionary*& dict, string& currentDataset) {
     cout << "Choose Data Set:" << endl;
@@ -56,8 +54,6 @@ void chooseDataSet(Dictionary*& dict, string& currentDataset) {
     }
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 2. Search By keyword
 void searchByKeyword(Dictionary* dict) {
     cout << "Enter keyword to search: ";
@@ -65,8 +61,6 @@ void searchByKeyword(Dictionary* dict) {
     cin >> keyword;
     cout << "Definition: " << dict->search(keyword) << endl;
 }
-// ==============================================================
-// ==============================================================
 // ==============================================================
 // 3. Search by definition
 void searchByDefinition(Dictionary* dict) {
@@ -87,8 +81,6 @@ void searchByDefinition(Dictionary* dict) {
     }
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 4. View History
 void viewHistory(Dictionary* dict) {
     vector<string> history = dict->viewHistory();
@@ -104,8 +96,6 @@ void viewHistory(Dictionary* dict) {
     }
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 5. Add new word
 void addNewWord(Dictionary* dict) {
     cout << "Enter new word: ";
@@ -119,8 +109,6 @@ void addNewWord(Dictionary* dict) {
     cout << "New word added to the dictionary." << endl;
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 6. Edit Definition
 void editDefinition(Dictionary* dict) {
     cout << "Enter word to edit: ";
@@ -133,8 +121,6 @@ void editDefinition(Dictionary* dict) {
     dict->editDefinition(word, newDefinition);
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 7. Remove word
 void removeWord(Dictionary* dict) {
     cout << "Enter word to remove: ";
@@ -143,23 +129,17 @@ void removeWord(Dictionary* dict) {
     dict->removeWordFromDictionary(word);
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 8. Reset dictionary
 void resetDictionary(Dictionary* dict, const string& originalFilePath) {
     dict->resetToOriginal(originalFilePath);
     cout << "Dictionary reset to original state." << endl;
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 9. View random word
 void viewRandomWord(Dictionary* dict) {
     auto word = dict->getRandomWord();
     cout << "Random Word: " << word.first << " - " << word.second << endl;
 }
-// ==============================================================
-// ==============================================================
 // ==============================================================
 // 10.View favourites
 void viewFavourites(Dictionary* dict) {
@@ -175,8 +155,6 @@ void viewFavourites(Dictionary* dict) {
         cout << endl;
     }
 }
-// ==============================================================
-// ==============================================================
 // ==============================================================
 // 11. Manage Favourites
 void manageFavourites(Dictionary* dict) {
@@ -201,8 +179,6 @@ void manageFavourites(Dictionary* dict) {
     }
 }
 // ==============================================================
-// ==============================================================
-// ==============================================================
 // 12. The app can make random a word with four definitions, and users guess its meaning.
 void guessCorrectDefinition(Dictionary* dict) {
     auto result = dict->getRandomWordWithDefinitions();
@@ -226,8 +202,6 @@ void guessCorrectDefinition(Dictionary* dict) {
         cout << "Incorrect. The correct definition is: " << definitions[correctIndex] << endl;
     }
 }
-// ==============================================================
-// ==============================================================
 // ==============================================================
 // 13. The app can provide a random definition with four keywords, and users choose the correct word.
 void guessCorrectWord(Dictionary* dict) {
