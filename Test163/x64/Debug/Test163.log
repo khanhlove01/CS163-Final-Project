@@ -1,0 +1,7 @@
+﻿  function.cpp
+E:\CS163 - 23APCS2\Visual studio\Test163\Test163\function.cpp(15,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\CS163 - 23APCS2\Visual studio\Test163\Test163\function.cpp(262,5): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\CS163 - 23APCS2\Visual studio\Test163\Test163\function.cpp(300,5): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  Test163.vcxproj -> E:\CS163 - 23APCS2\Visual studio\Test163\x64\Debug\Test163.exe
